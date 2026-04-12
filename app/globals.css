@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --foreground-rgb: 15, 23, 42;
+    --heading-xl: 3.5rem;
+    --heading-lg: 2rem;
+    --text-lg: 1.125rem;
+    --text-base: 1rem;
+    --text-sm: 0.9rem;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: #ffffff;
+    min-height: 100vh;
+  }
+
+  section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  section + section {
+    margin-top: 0;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+  
+  .glass-dark {
+    @apply bg-dark-900/80 backdrop-blur-md border border-dark-700/20;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .btn-glow {
+    @apply shadow-lg shadow-primary-500/30 hover:shadow-primary-500/50 transition-shadow duration-300;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
