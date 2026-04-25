@@ -1,8 +1,9 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 
-const Brands = () => {
+const Brands = React.memo(function Brands() {
   const brands = [
     { name: 'Waaree', logo: '/brands/waaree.png' },
     { name: 'Adani Solar', logo: '/brands/adani.png' },
@@ -22,7 +23,7 @@ const Brands = () => {
       <div className="text-center mb-10 px-6 md:px-10 xl:px-16 2xl:px-24">
         <h2 className="text-2xl font-semibold text-dark-900">Trusted Premium Brands</h2>
         <p className="text-dark-600 text-sm mt-2">
-          We partner with India's leading solar manufacturers
+          We partner with India&apos;s leading solar manufacturers
         </p>
       </div>
 
@@ -39,9 +40,11 @@ const Brands = () => {
             <div key={i} className="flex gap-20 items-center">
               {brands.map((brand) => (
                 <div key={brand.name} className="w-40 h-24 flex items-center justify-center">
-                  <img
+                  <Image
                     src={brand.logo}
                     alt={brand.name}
+                    width={160}
+                    height={56}
                     className="max-h-14 object-contain opacity-80 hover:opacity-100 hover:scale-105 transition duration-300"
                   />
                 </div>
@@ -52,6 +55,6 @@ const Brands = () => {
       </div>
     </section>
   )
-}
+})
 
 export default Brands

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function ServicesPage() {
   const services = [
@@ -69,11 +70,13 @@ export default function ServicesPage() {
               className="bg-white border-2 border-[#d1d5db] rounded-xl overflow-hidden shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] transition"
             >
               {service.image && (
-                <div className="h-auto overflow-hidden">
-                  <img
+                <div className="h-auto overflow-hidden relative aspect-video">
+                  <Image
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-auto object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
                   />
                 </div>
               )}

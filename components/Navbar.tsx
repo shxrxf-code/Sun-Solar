@@ -1,23 +1,25 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sun, Zap } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import Image from 'next/image'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+  const handleScroll = useCallback(() => {
+    setIsScrolled(window.scrollY > 20)
   }, [])
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [handleScroll])
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -38,9 +40,11 @@ const Navbar = () => {
       <div className="w-full px-6 md:px-10 xl:px-16 2xl:px-24">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center space-x-2 group">
-            <img
+            <Image
               src="/sunsolar-logo.png"
               alt="Sun Solar Logo"
+              width={48}
+              height={48}
               className="h-12 w-auto group-hover:scale-105 transition-transform"
             />
             <div>
