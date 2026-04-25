@@ -81,7 +81,7 @@ const Testimonials = () => {
   }
 
   return (
-    <section className="py-24 bg-gradient-to-b from-primary-50 to-white">
+    <section className="py-12 bg-gradient-to-b from-primary-50 to-white">
       <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-16 2xl:px-24 text-center">
 
         {/* HEADER */}
@@ -126,30 +126,9 @@ const Testimonials = () => {
 
               {/* User */}
               <div className="mt-6 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  {t.image ? (
-                    <div className="w-12 h-12 rounded-full overflow-hidden bg-primary-100 relative">
-                      <Image
-                        src={t.image}
-                        alt={t.name}
-                        width={48}
-                        height={48}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute bottom-0 right-0 bg-primary-600 text-white p-0.5 rounded-full">
-                        <CheckCircle className="w-3 h-3" />
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="w-12 h-12 rounded-full bg-primary-200 flex items-center justify-center text-primary-700 font-semibold text-lg">
-                      {t.name.charAt(0)}
-                    </div>
-                  )}
-
-                  <div className="text-left">
-                    <p className="font-semibold text-lg text-dark-900">{t.name}</p>
-                    <p className="text-sm text-dark-600">{t.location}</p>
-                  </div>
+                <div className="text-left">
+                  <p className="font-semibold text-lg text-dark-900">{t.name}</p>
+                  <p className="text-sm text-dark-600">{t.location}</p>
                 </div>
 
                 {t.savings && (

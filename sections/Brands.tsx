@@ -18,7 +18,7 @@ const Brands = () => {
   ]
 
   return (
-    <section className="w-full py-16 bg-white overflow-hidden">
+    <section className="w-full py-8 bg-white overflow-hidden">
       <div className="text-center mb-10 px-6 md:px-10 xl:px-16 2xl:px-24">
         <h2 className="text-2xl font-semibold text-dark-900">Trusted Premium Brands</h2>
         <p className="text-dark-600 text-sm mt-2">

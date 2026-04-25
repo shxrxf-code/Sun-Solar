@@ -5,51 +5,47 @@ import Link from 'next/link'
 
 const Hero = () => {
   return (
-    <section className="w-full bg-gradient-to-b from-white to-primary-50 py-20 md:py-24">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-16 2xl:px-24 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <section className="relative w-full py-20 md:py-28 flex items-center justify-center text-center">
 
-        {/* LEFT */}
-        <div>
-          <h1 className="font-poppins text-3xl md:text-5xl font-bold text-dark-900 leading-tight">
-            Save up to <span className="text-primary-600">80%</span> on Electricity
-          </h1>
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80"
+          alt="Solar Panels"
+          className="w-full h-full object-cover"
+        />
+      </div>
 
-          <p className="mt-4 text-dark-600 text-base md:text-lg">
-            Switch to solar with government subsidy & 25-year warranty.
-          </p>
+      {/* Dark Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
 
-          <div className="flex flex-col sm:flex-row gap-3 mt-6">
-            <Link href="/contact" className="w-full sm:w-auto">
-              <button className="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors shadow-md">
-                Get Free Consultation
-              </button>
-            </Link>
-            <Link href="/calculator" className="w-full sm:w-auto">
-              <button className="w-full border border-primary-600 text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-primary-50 transition-colors">
-                Calculate Savings
-              </button>
-            </Link>
-          </div>
+      {/* Content */}
+      <div className="relative z-10 max-w-3xl px-6 text-white space-y-5">
+
+        <h1 className="font-poppins text-4xl md:text-5xl font-semibold leading-tight">
+          Reduce Your Electricity Bills by{" "}
+          <span className="text-green-400">95% with Solar</span>
+        </h1>
+
+        <p className="mt-4 text-base md:text-lg text-gray-200 leading-relaxed">
+          Trusted by 1000+ customers. Government subsidy available.
+          25-year performance warranty included.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
+          <Link href="/contact" className="w-full sm:w-auto">
+            <button className="w-full px-8 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition">
+              Get Free Consultation
+            </button>
+          </Link>
         </div>
 
-        {/* RIGHT CARD */}
-        <div className="bg-white p-6 md:p-8 rounded-xl shadow-md border border-dark-100">
-          <p className="text-sm text-dark-600">Monthly Savings</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-dark-900 mt-2">
-            ₹8,500
-          </h2>
-          <p className="text-sm text-dark-600 mt-1">Average for 5kW system</p>
-
-          <div className="grid grid-cols-2 gap-4 mt-6">
-            <div className="bg-primary-50 p-4 rounded-lg">
-              <p className="text-xl font-semibold text-dark-900">5–6</p>
-              <p className="text-xs text-dark-600">Years Payback</p>
-            </div>
-            <div className="bg-primary-50 p-4 rounded-lg">
-              <p className="text-xl font-semibold text-dark-900">40%</p>
-              <p className="text-xs text-dark-600">Gov Subsidy</p>
-            </div>
-          </div>
+        {/* Trust Indicators */}
+        <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-gray-300">
+          <span>✔ Govt Approved</span>
+          <span>✔ 15+ Years Experience</span>
+          <span>✔ 1000+ Installations</span>
         </div>
 
       </div>

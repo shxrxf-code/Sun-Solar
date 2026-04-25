@@ -22,7 +22,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
-    { name: 'Products', href: '/products' },
+    { name: 'Category', href: '/products' },
     { name: 'Projects', href: '/projects' },
     { name: 'Contact', href: '/contact' },
   ]
@@ -38,12 +38,14 @@ const Navbar = () => {
       <div className="w-full px-6 md:px-10 xl:px-16 2xl:px-24">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="bg-primary-600 p-2 rounded-lg group-hover:scale-110 transition-transform">
-              <Zap className="w-6 h-6 text-white" />
-            </div>
+            <img
+              src="/sunsolar-logo.png"
+              alt="Sun Solar Logo"
+              className="h-12 w-auto group-hover:scale-105 transition-transform"
+            />
             <div>
-              <h1 className="font-poppins text-lg font-semibold text-dark-900">Sun Solar</h1>
-              <p className="text-xs text-dark-600">Power Systems</p>
+              <h1 className="font-poppins text-xl font-bold text-dark-900">Sun Solar</h1>
+              <p className="text-xs text-dark-600 font-semibold">Power Systems</p>
             </div>
           </Link>
 

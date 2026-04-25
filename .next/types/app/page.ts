@@ -1,4 +1,4 @@
-// File: /home/sharaf/Projects/Sun Solar PS/app/page.tsx
+// File: D:\Projects\Sun Solar PS\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

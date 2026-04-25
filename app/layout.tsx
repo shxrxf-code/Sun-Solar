@@ -10,17 +10,17 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-poppins' })
 
 export const metadata: Metadata = {
-  title: 'Sun Solar Power Systems | Cut Electricity Bills by 80%',
+  title: 'Sun Solar Power Systems | Cut Electricity Bills by 95%',
   description: 'Premium solar installation services. 15+ years experience, 1000+ installations. Get free consultation and calculate your solar savings today.',
   keywords: 'solar panels, solar installation, solar energy, rooftop solar, solar subsidy India',
   openGraph: {
-    title: 'Sun Solar Power Systems | Cut Electricity Bills by 80%',
+    title: 'Sun Solar Power Systems | Cut Electricity Bills by 95%',
     description: 'Premium solar installation services. 15+ years experience, 1000+ installations.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sun Solar Power Systems | Cut Electricity Bills by 80%',
+    title: 'Sun Solar Power Systems | Cut Electricity Bills by 95%',
     description: 'Premium solar installation services. 15+ years experience, 1000+ installations.',
   },
   robots: {
@@ -40,8 +40,8 @@ export default function RootLayout({
     name: 'Sun Solar Power Systems',
     description: 'Premium solar installation services with 15+ years experience and 1000+ installations across India.',
     url: 'https://www.sunsolar.com',
-    telephone: '+919876543210',
-    email: 'info@sunsolar.com',
+    telephone: '+917708001737',
+    email: 'sunsolarpowersystems@gmail.com',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '123 Solar Street',
@@ -74,7 +74,7 @@ export default function RootLayout({
       </head>
       <body className="font-inter bg-white overflow-x-hidden">
         <Navbar />
-        <main className="w-full">
+        <main className="w-full pt-4">
           {children}
         </main>
         <Footer />

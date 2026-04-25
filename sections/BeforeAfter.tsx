@@ -33,7 +33,7 @@ export default function BeforeAfter() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <p className="text-center text-sm text-primary-600 mt-3 font-semibold">After Solar • 80% Savings</p>
+            <p className="text-center text-sm text-primary-600 mt-3 font-semibold">After Solar • 95% Savings</p>
           </div>
         </div>
       </div>

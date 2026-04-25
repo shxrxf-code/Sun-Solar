@@ -1,31 +1,38 @@
 import Hero from '@/sections/Hero'
 import TrustStrip from '@/sections/TrustStrip'
-import ProblemSolution from '@/sections/ProblemSolution'
 import Services from '@/sections/Services'
+import SavingsROI from '@/sections/SavingsROI'
 import HowItWorks from '@/sections/HowItWorks'
-import CalculatorPreview from '@/sections/CalculatorPreview'
 import WhyChooseUs from '@/sections/WhyChooseUs'
-import ProjectsPreview from '@/sections/ProjectsPreview'
-import BeforeAfter from '@/sections/BeforeAfter'
-import FinalCTA from '@/sections/FinalCTA'
+import FAQ from '@/sections/FAQ'
 import Testimonials from '@/sections/Testimonials'
 import Brands from '@/sections/Brands'
 
 export default function Home() {
   return (
-    <div className="bg-white">
-      <Hero />
-      <TrustStrip />
-      <ProblemSolution />
-      <Services />
-      <HowItWorks />
-      <CalculatorPreview />
-      <WhyChooseUs />
-      <ProjectsPreview />
-      <BeforeAfter />
-      <FinalCTA />
-      <Testimonials />
-      <Brands />
+    <div className="bg-white relative">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0 min-h-screen">
+        <img
+          src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80"
+          alt="Solar Panels Background"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-white/90"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        <Hero />
+        <TrustStrip />
+        <Services />
+        <SavingsROI />
+        <HowItWorks />
+        <WhyChooseUs />
+        <FAQ />
+        <Testimonials />
+        <Brands />
+      </div>
     </div>
   )
 }

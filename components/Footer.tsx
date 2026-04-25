@@ -1,45 +1,54 @@
 import React from 'react'
 import Link from 'next/link'
-import { Zap } from 'lucide-react'
+import { Zap, Phone, MessageCircle, Mail } from 'lucide-react'
 
 const Footer = () => {
   return (
     <footer className="bg-dark-900 text-gray-400">
-      <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-8">
-        {/* Left: Logo + Tagline */}
-        <div className="text-center md:text-left">
-          <div className="flex items-center justify-center md:justify-start gap-2">
-            <div className="bg-primary-600 p-2 rounded-md">
-              <Zap className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-white font-semibold text-lg">Sun Solar</span>
-          </div>
-          <p className="text-sm mt-3 text-gray-500 max-w-xs">
-            Smart solar solutions for homes & businesses. Save energy, save money.
-          </p>
+      <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col items-center gap-3 text-center">
+        
+        {/* Logo + Brand */}
+        <div className="flex items-center gap-2">
+          <img
+            src="/sunsolar-logo.png"
+            alt="Sun Solar Logo"
+            className="h-8 w-auto"
+          />
+          <span className="text-white font-semibold text-sm">Sun Solar</span>
         </div>
 
-        {/* Center: Navigation */}
-        <div className="flex gap-6 text-sm">
-          <Link href="/" className="relative hover:text-primary-400 after:absolute after:left-0 after:-bottom-1 after:w-0 hover:after:w-full after:h-[1px] after:bg-primary-400 after:transition-all transition">Home</Link>
-          <Link href="/services" className="relative hover:text-primary-400 after:absolute after:left-0 after:-bottom-1 after:w-0 hover:after:w-full after:h-[1px] after:bg-primary-400 after:transition-all transition">Services</Link>
-          <Link href="/projects" className="relative hover:text-primary-400 after:absolute after:left-0 after:-bottom-1 after:w-0 hover:after:w-full after:h-[1px] after:bg-primary-400 after:transition-all transition">Projects</Link>
-          <Link href="/contact" className="relative hover:text-primary-400 after:absolute after:left-0 after:-bottom-1 after:w-0 hover:after:w-full after:h-[1px] after:bg-primary-400 after:transition-all transition">Contact</Link>
+        {/* Navigation Links */}
+        <div className="flex gap-3 text-xs">
+          <Link href="/" className="hover:text-primary-400 transition">Home</Link>
+          <span>•</span>
+          <Link href="/services" className="hover:text-primary-400 transition">Services</Link>
+          <span>•</span>
+          <Link href="/projects" className="hover:text-primary-400 transition">Projects</Link>
+          <span>•</span>
+          <Link href="/contact" className="hover:text-primary-400 transition">Contact</Link>
         </div>
 
-        {/* Right: Contact */}
-        <div className="text-sm text-center md:text-right space-y-1">
-          <p className="text-white font-medium">+91 98765 43210</p>
-          <p>info@sunsolar.com</p>
+        {/* Contact */}
+        <div className="text-xs space-y-1">
+          <a href="https://wa.me/919489231133" className="text-white font-medium hover:text-primary-400 transition flex items-center justify-center gap-1">
+            <MessageCircle className="w-3 h-3" />
+            +91 94892 31133
+          </a>
+          <a href="tel:+917708001737" className="text-white font-medium hover:text-primary-400 transition flex items-center justify-center gap-1">
+            <Phone className="w-3 h-3" />
+            +91 77080 01737
+          </a>
+          <a href="mailto:sunsolarpowersystems@gmail.com" className="text-white font-medium hover:text-primary-400 transition flex items-center justify-center gap-1">
+            <Mail className="w-3 h-3" />
+            sunsolarpowersystems@gmail.com
+          </a>
         </div>
-      </div>
 
-      {/* Divider */}
-      <div className="border-t border-dark-800"></div>
+        {/* Copyright */}
+        <p className="text-xs text-gray-500">
+          © 2024 Sun Solar
+        </p>
 
-      {/* Bottom */}
-      <div className="text-center py-4 text-xs text-gray-500">
-        © 2024 Sun Solar Power Systems. All rights reserved.
       </div>
     </footer>
   )

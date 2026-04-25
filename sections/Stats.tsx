@@ -13,7 +13,7 @@ const Stats = () => {
   })
 
   useEffect(() => {
-    const targets = { installations: 1000, customers: 2500, years: 15, satisfaction: 98 }
+    const targets = { installations: 1000, customers: 2500, years: 15, satisfaction: 100 }
     const duration = 2000
     const steps = 60
     const interval = duration / steps

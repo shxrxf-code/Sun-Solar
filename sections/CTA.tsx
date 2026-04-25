@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 const CTA = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-700">
+    <section className="py-12 bg-gradient-to-r from-primary-600 to-primary-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,18 +37,13 @@ const CTA = () => {
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Link href="/calculator">
-                  <Button variant="outline" size="lg">
-                    Calculate Savings
-                  </Button>
-                </Link>
               </div>
             </div>
             <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8">
               <h3 className="text-xl font-bold text-dark-900 mb-6">Quick Benefits</h3>
               <ul className="space-y-4">
                 {[
-                  'Save up to 80% on electricity bills',
+                  'Save up to 95% on electricity bills',
                   '25-year performance warranty',
                   'Free site survey and consultation',
                   'MNRE approved installation',

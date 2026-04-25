@@ -102,26 +102,10 @@ export default function ProjectsPage() {
                 <span className="text-primary-600">Across India</span>
               </h2>
 
-              <p className="text-dark-600 mt-4 max-w-lg">
-                Real installations. Real savings. See how we've helped 1000+ customers
+              <p className="text-dark-600 mt-3 max-w-lg">
+                Real installations. Real savings. See how we&apos;ve helped 1000+ customers
                 reduce electricity bills and switch to clean, sustainable energy.
               </p>
-
-              {/* CTA */}
-              <div className="mt-6 flex gap-4">
-                <Link href="#projects">
-                  <Button size="lg" className="group">
-                    View Projects
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-
-                <Link href="/contact">
-                  <Button variant="outline" size="lg">
-                    Get Free Consultation
-                  </Button>
-                </Link>
-              </div>
             </div>
 
             {/* RIGHT SIDE (STATS / TRUST BLOCK) */}
@@ -143,7 +127,7 @@ export default function ProjectsPage() {
               </div>
 
               <div className="bg-white p-6 rounded-xl shadow text-center">
-                <h3 className="text-2xl font-bold text-primary-600">98%</h3>
+                <h3 className="text-2xl font-bold text-primary-600">100%</h3>
                 <p className="text-sm text-dark-600">Customer Satisfaction</p>
               </div>
 
@@ -154,55 +138,53 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section id="projects" className="py-20 bg-gradient-to-b from-white to-primary-50">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-8 mt-10">
+      <section id="projects" className="py-12 bg-gradient-to-b from-white to-primary-50">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {projects.map((project) => (
-              <Card key={project.id} className="overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
+              <div
+                key={project.id}
+                className="bg-white rounded-xl border border-neutral-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+              >
+                {/* IMAGE */}
+                <div className="h-44 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
                   <Zap className="w-16 h-16 text-primary-400" />
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center text-sm text-dark-600 mb-2">
-                    <MapPin className="w-4 h-4 mr-1" />
+
+                {/* CONTENT */}
+                <div className="p-4 space-y-2">
+                  <h3 className="text-base font-semibold text-neutral-900">
+                    {project.title}
+                  </h3>
+
+                  <div className="flex items-center text-xs text-neutral-500">
+                    <MapPin className="w-3 h-3 mr-1" />
                     {project.location}
                   </div>
-                  <h3 className="text-xl font-bold text-dark-900 mb-2">{project.title}</h3>
-                  <div className="inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+
+                  <div className="inline-block bg-primary-100 text-primary-700 px-2 py-0.5 rounded-full text-xs font-semibold">
                     {project.size}
                   </div>
-                  <p className="text-dark-600 text-sm mb-4">{project.description}</p>
-                  
-                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-100">
-                    <div>
-                      <div className="text-xs text-dark-600 mb-1">Before</div>
-                      <div className="text-sm font-semibold text-red-600">{project.beforeBill}</div>
-                    </div>
-                    <div>
-                      <div className="text-xs text-dark-600 mb-1">After</div>
-                      <div className="text-sm font-semibold text-green-600">{project.afterBill}</div>
-                    </div>
+
+                  <p className="text-sm text-neutral-500 line-clamp-2">
+                    {project.description}
+                  </p>
+
+                  {/* META */}
+                  <div className="flex justify-between text-xs text-neutral-400 pt-1">
+                    <span>{project.savings}</span>
+                    <span>{project.roi}</span>
                   </div>
-                  
-                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-100 mt-4">
-                    <div>
-                      <div className="flex items-center text-xs text-dark-600 mb-1">
-                        <TrendingUp className="w-3 h-3 mr-1" />
-                        Annual Savings
-                      </div>
-                      <div className="text-sm font-bold text-primary-600">{project.savings}</div>
-                    </div>
-                    <div>
-                      <div className="flex items-center text-xs text-dark-600 mb-1">
-                        <Calendar className="w-3 h-3 mr-1" />
-                        ROI
-                      </div>
-                      <div className="text-sm font-bold text-primary-600">{project.roi}</div>
-                    </div>
-                  </div>
+
+                  {/* CTA */}
+                  <button className="w-full mt-2 h-9 rounded-lg bg-green-600 text-white text-sm font-medium hover:bg-green-700 transition">
+                    View Project →
+                  </button>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
+        </div>
       </section>
 
       {/* CTA Section */}
@@ -219,11 +201,6 @@ export default function ProjectsPage() {
               <Button size="lg" className="group">
                 Get Free Quote
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-            <Link href="/calculator">
-              <Button variant="outline" size="lg">
-                Calculate Savings
               </Button>
             </Link>
           </div>

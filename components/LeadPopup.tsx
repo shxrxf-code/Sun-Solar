@@ -8,6 +8,11 @@ import Button from '@/ui/Button'
 const LeadPopup = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [hasShown, setHasShown] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -20,7 +25,7 @@ const LeadPopup = () => {
     return () => clearTimeout(timer)
   }, [hasShown])
 
-  if (!isOpen) return null
+  if (!mounted || !isOpen) return null
 
   return (
     <AnimatePresence>

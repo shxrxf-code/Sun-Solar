@@ -1,167 +1,181 @@
-import { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
-import { Sun, Battery, Droplets, Waves, ArrowRight, CheckCircle, TrendingUp, Users, Clock } from 'lucide-react'
-import Button from '@/ui/Button'
-import Card from '@/ui/Card'
-
-export const metadata: Metadata = {
-  title: 'Solar Services | Sun Solar Power Systems',
-  description: 'Complete solar solutions - On-grid, Off-grid, Solar Water Heaters, and Solar Pumps. Premium installation with 25-year warranty.',
-}
-
-const services = [
-  {
-    icon: Sun,
-    title: 'On-Grid Solar Systems',
-    description: 'Connected to the power grid, allowing you to export excess electricity and earn credits. Best for areas with reliable grid power.',
-    features: [
-      'Net metering enabled',
-      'Export excess power to grid',
-      'Low maintenance',
-      'Fast ROI (4-5 years)',
-      'Government subsidy eligible',
-    ],
-    whoFor: 'Homeowners, businesses with reliable grid connection',
-    priceRange: '₹45,000 - ₹60,000 per kW',
-    roi: '4-5 years',
-  },
-  {
-    icon: Battery,
-    title: 'Off-Grid Solar Systems',
-    description: 'Complete independence from the power grid with battery storage. Ideal for remote areas or places with frequent power cuts.',
-    features: [
-      'Battery backup included',
-      'Power during outages',
-      'Complete energy independence',
-      'Suitable for remote locations',
-      '24/7 power availability',
-    ],
-    whoFor: 'Remote areas, frequent power cut zones',
-    priceRange: '₹65,000 - ₹85,000 per kW',
-    roi: '5-6 years',
-  },
-  {
-    icon: Droplets,
-    title: 'Solar Water Heaters',
-    description: 'Eco-friendly water heating solutions using solar energy. Zero electricity cost for hot water throughout the year.',
-    features: [
-      '300 days hot water annually',
-      'Zero running cost',
-      '5-year warranty',
-      'Instant hot water',
-      'Environmentally friendly',
-    ],
-    whoFor: 'Homes, hotels, hospitals, hostels',
-    priceRange: '₹15,000 - ₹35,000',
-    roi: '2-3 years',
-  },
-  {
-    icon: Waves,
-    title: 'Solar Pumps',
-    description: 'Agricultural and industrial water pumping powered by solar energy. Replace diesel pumps and save huge fuel costs.',
-    features: [
-      'No fuel or electricity cost',
-      'Low maintenance',
-      'Government subsidy available',
-      'Automatic operation',
-      'Long lifespan (20+ years)',
-    ],
-    whoFor: 'Farmers, agriculture, irrigation',
-    priceRange: '₹50,000 - ₹2,00,000',
-    roi: '3-4 years',
-  },
-]
 
 export default function ServicesPage() {
-  return (
-    <div className="bg-white">
-      {/* Services Grid */}
-      <section className="pt-28 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <Card key={service.title} className="p-8 h-full">
-                <div className="flex items-start justify-between mb-6">
-                  <div className="p-4 bg-primary-100 rounded-2xl">
-                    <service.icon className="w-8 h-8 text-primary-600" />
-                  </div>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold text-primary-600">{service.priceRange}</div>
-                    <div className="text-sm text-dark-600">Estimated Cost</div>
-                  </div>
-                </div>
-                
-                <h2 className="text-2xl font-bold text-dark-900 mb-3">{service.title}</h2>
-                <p className="text-dark-600 mb-6">{service.description}</p>
-                
-                <div className="space-y-4 mb-6">
-                  <div>
-                    <h3 className="font-semibold text-dark-900 mb-2 flex items-center">
-                      <CheckCircle className="w-4 h-4 text-primary-600 mr-2" />
-                      Key Features
-                    </h3>
-                    <ul className="space-y-2">
-                      {service.features.map((feature) => (
-                        <li key={feature} className="text-sm text-dark-600 flex items-start">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2 mt-2 flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-100">
-                    <div>
-                      <div className="flex items-center text-sm text-dark-600 mb-1">
-                        <Users className="w-4 h-4 mr-1" />
-                        Best For
-                      </div>
-                      <div className="text-sm font-medium text-dark-900">{service.whoFor}</div>
-                    </div>
-                    <div>
-                      <div className="flex items-center text-sm text-dark-600 mb-1">
-                        <TrendingUp className="w-4 h-4 mr-1" />
-                        ROI Period
-                      </div>
-                      <div className="text-sm font-medium text-dark-900">{service.roi}</div>
-                    </div>
-                  </div>
-                </div>
-                
-                <Link href="/contact">
-                  <Button className="w-full group">
-                    Get Quote
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-              </Card>
-            ))}
-          </div>
-      </section>
+  const services = [
+    {
+      title: 'On-Grid Solar Systems',
+      desc: 'Connect your system to the power grid and earn credits from excess energy.',
+      features: [
+        'Net metering support',
+        'Lower electricity bills',
+        'Govt subsidy available',
+      ],
+      image: '/Ongrid.jpg',
+    },
+    {
+      title: 'Off-Grid Solar Systems',
+      desc: 'Complete energy independence with battery backup for remote locations.',
+      features: [
+        'Battery storage included',
+        'Power during outages',
+        '24/7 energy availability',
+      ],
+      image: '/Offgrid.jpg',
+    },
+    {
+      title: 'Solar Water Heaters',
+      desc: 'Eco-friendly water heating with zero electricity cost throughout the year.',
+      features: [
+        'Zero running cost',
+        '300 days hot water',
+        '5-year warranty',
+      ],
+      image: '/solar-water-heater.jpg',
+    },
+    {
+      title: 'Solar Water Pumps',
+      desc: 'Agricultural and industrial water pumping powered by solar energy.',
+      features: [
+        'No fuel costs',
+        'Automatic operation',
+        'Govt subsidy eligible',
+      ],
+      image: '/solar-water-pumps.jpg',
+    },
+  ]
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-primary-50 to-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-dark-900 mb-6">
-            Not Sure Which System is Right for You?
-          </h2>
-          <p className="text-lg text-dark-600 mb-8">
-            Our experts will analyze your requirements and recommend the best solar solution for your needs.
+  return (
+    <section className="bg-[#f4f6f5] min-h-screen pt-24 pb-16 px-6">
+      <div className="max-w-6xl mx-auto">
+
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-semibold text-neutral-900">
+            Complete Solar Solutions
+          </h1>
+          <p className="mt-4 text-lg text-neutral-600 max-w-2xl mx-auto">
+            From installation to maintenance, we provide end-to-end solar services designed for maximum savings and efficiency.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <Button size="lg" className="group">
-                Get Free Consultation
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-            <Link href="/calculator">
-              <Button variant="outline" size="lg">
-                Calculate Savings
-              </Button>
-            </Link>
+        </div>
+
+        {/* Services Grid */}
+        <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
+
+          {services.map((service, i) => (
+            <div
+              key={i}
+              className="bg-white border-2 border-[#d1d5db] rounded-xl overflow-hidden shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] transition"
+            >
+              {service.image && (
+                <div className="h-auto overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              )}
+              <div className="p-4 space-y-3">
+                <h3 className="text-lg font-semibold text-neutral-900">
+                  {service.title}
+                </h3>
+
+                <p className="text-xs text-neutral-600">
+                  {service.desc}
+                </p>
+
+                {/* Features */}
+                <ul className="space-y-1 text-xs text-neutral-500">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx}>✔ {feature}</li>
+                  ))}
+                </ul>
+
+                <Link href="/contact" className="text-green-600 text-xs font-medium pt-1 hover:text-green-700 transition">
+                  Learn more →
+                </Link>
+              </div>
+            </div>
+          ))}
+
+        </div>
+
+        {/* How It Works */}
+        <div className="mt-20">
+          <h2 className="text-2xl font-semibold text-center text-neutral-900 mb-10">
+            How It Works
+          </h2>
+
+          <div className="grid md:grid-cols-4 gap-6 text-center">
+
+            <div className="bg-white border-2 border-[#d1d5db] rounded-xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+              <h3 className="font-semibold text-neutral-900">1. Consultation</h3>
+              <p className="text-sm text-neutral-500 mt-2">
+                Understand your energy needs
+              </p>
+            </div>
+
+            <div className="bg-white border-2 border-[#d1d5db] rounded-xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+              <h3 className="font-semibold text-neutral-900">2. Site Inspection</h3>
+              <p className="text-sm text-neutral-500 mt-2">
+                Evaluate your location
+              </p>
+            </div>
+
+            <div className="bg-white border-2 border-[#d1d5db] rounded-xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+              <h3 className="font-semibold text-neutral-900">3. Installation</h3>
+              <p className="text-sm text-neutral-500 mt-2">
+                Quick and professional setup
+              </p>
+            </div>
+
+            <div className="bg-white border-2 border-[#d1d5db] rounded-xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+              <h3 className="font-semibold text-neutral-900">4. Savings Start</h3>
+              <p className="text-sm text-neutral-500 mt-2">
+                Reduce electricity bills instantly
+              </p>
+            </div>
+
           </div>
         </div>
-      </section>
-    </div>
+
+        {/* Why Choose Us */}
+        <div className="mt-20 bg-white border-2 border-[#d1d5db] rounded-xl p-10 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+
+          <h2 className="text-2xl font-semibold text-center text-neutral-900 mb-8">
+            Why Choose Sun Solar?
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-6 text-center">
+
+            <div>
+              <h3 className="font-semibold text-neutral-900">1000+ Installations</h3>
+              <p className="text-sm text-neutral-500 mt-2">
+                Proven track record across India
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-neutral-900">25-Year Warranty</h3>
+              <p className="text-sm text-neutral-500 mt-2">
+                Long-term performance guarantee
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-neutral-900">Govt Approved</h3>
+              <p className="text-sm text-neutral-500 mt-2">
+                Eligible for subsidies and incentives
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
   )
 }

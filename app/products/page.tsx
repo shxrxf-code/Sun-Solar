@@ -124,7 +124,7 @@ export default function ProductsPage() {
 
       {/* Product Grid */}
       <div className="w-full px-8 xl:px-16 2xl:px-24 pb-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 mt-10">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 mt-10">
           {filteredProducts.map((product, index) => (
             <motion.div
               key={product.id}
