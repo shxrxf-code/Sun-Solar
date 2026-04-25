@@ -1872,8 +1872,16 @@ video {
 
 @media (min-width: 640px) {
 
+  .sm\:h-full {
+    height: 100%;
+  }
+
   .sm\:w-auto {
     width: auto;
+  }
+
+  .sm\:w-64 {
+    width: 16rem;
   }
 
   .sm\:grid-cols-2 {
@@ -1882,6 +1890,10 @@ video {
 
   .sm\:flex-row {
     flex-direction: row;
+  }
+
+  .sm\:p-6 {
+    padding: 1.5rem;
   }
 
   .sm\:px-6 {

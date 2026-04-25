@@ -124,7 +124,7 @@ export default function ProductsPage() {
 
       {/* Product Grid */}
       <div className="w-full px-8 xl:px-16 2xl:px-24 pb-20">
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 mt-10">
+        <div className="space-y-6 mt-10">
           {filteredProducts.map((product, index) => (
             <motion.div
               key={product.id}
@@ -132,47 +132,49 @@ export default function ProductsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
             >
-              <Card className="group h-full overflow-hidden border border-transparent group-hover:border-primary-200 shadow-sm hover:shadow-xl hover:shadow-primary-100 transition-all duration-300 transform hover:-translate-y-2">
-                <div className="overflow-hidden bg-gray-100">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-48 object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-poppins text-lg font-semibold text-dark-900 mb-2 group-hover:text-primary-600 transition-colors">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-dark-600 mb-4 line-clamp-2">
-                    {product.description}
-                  </p>
-                  
-                  <div className="space-y-2 mb-4">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">Power:</span>
-                      <span className="font-medium text-dark-900">{product.specs.watt}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">Efficiency:</span>
-                      <span className="font-medium text-dark-900">{product.specs.efficiency}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">Warranty:</span>
-                      <span className="font-medium text-dark-900">{product.specs.warranty}</span>
-                    </div>
+              <Card className="group overflow-hidden border border-transparent group-hover:border-primary-200 shadow-sm hover:shadow-xl hover:shadow-primary-100 transition-all duration-300">
+                <div className="flex flex-col sm:flex-row">
+                  <div className="sm:w-64 overflow-hidden bg-gray-100">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-48 sm:h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
                   </div>
+                  <div className="flex-1 p-5 sm:p-6">
+                    <h3 className="font-poppins text-lg font-semibold text-dark-900 mb-2 group-hover:text-primary-600 transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-dark-600 mb-4 line-clamp-2">
+                      {product.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-4 mb-4">
+                      <div className="flex items-center gap-2 text-sm">
+                        <span className="text-gray-500">Power:</span>
+                        <span className="font-medium text-dark-900">{product.specs.watt}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm">
+                        <span className="text-gray-500">Efficiency:</span>
+                        <span className="font-medium text-dark-900">{product.specs.efficiency}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm">
+                        <span className="text-gray-500">Warranty:</span>
+                        <span className="font-medium text-dark-900">{product.specs.warranty}</span>
+                      </div>
+                    </div>
 
-                  <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                    <span className="text-primary-600 font-semibold text-sm">
-                      {product.price}
-                    </span>
-                    <Link href="/contact">
-                      <Button size="sm" className="group-hover:scale-[1.03] transition-transform">
-                        Get Quote
-                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </Link>
+                    <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                      <span className="text-primary-600 font-semibold text-sm">
+                        {product.price}
+                      </span>
+                      <Link href="/contact">
+                        <Button size="sm" className="group-hover:scale-[1.03] transition-transform">
+                          Get Quote
+                          <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </Card>
