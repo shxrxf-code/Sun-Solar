@@ -3,6 +3,7 @@ import { MapPin, Zap, TrendingUp, Calendar, ArrowRight } from 'lucide-react'
 import Button from '@/ui/Button'
 import Card from '@/ui/Card'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Solar Projects | Sun Solar Power Systems',
@@ -19,7 +20,7 @@ const projects = [
     afterBill: '₹1,200/month',
     savings: '₹88,000/year',
     roi: '4.5 years',
-    image: 'Residential home with rooftop solar panels',
+    image: '/Ongrid.jpg',
     description: 'Complete rooftop solar installation for a 3BHK apartment. System includes premium Tata Power Solar panels with 25-year warranty.',
   },
   {
@@ -31,7 +32,7 @@ const projects = [
     afterBill: '₹8,000/month',
     savings: '₹4,44,000/year',
     roi: '4 years',
-    image: 'Office building with solar installation',
+    image: '/Ongrid.jpg',
     description: 'Large-scale commercial installation for a software company. System designed to handle peak load requirements with net metering.',
   },
   {
@@ -43,7 +44,7 @@ const projects = [
     afterBill: '₹35,000/month',
     savings: '₹17,40,000/year',
     roi: '3.5 years',
-    image: 'Factory rooftop with solar array',
+    image: '/Ongrid.jpg',
     description: 'Industrial solar installation for a textile manufacturing unit. Custom-designed system to reduce operational costs significantly.',
   },
   {
@@ -55,7 +56,7 @@ const projects = [
     afterBill: '₹0/month',
     savings: '₹30,000/year',
     roi: '2 years',
-    image: 'Solar water heater installation on terrace',
+    image: '/solar-water-heater.jpg',
     description: 'ETC type solar water heater for a villa. Provides hot water for 300 liters daily with zero electricity cost.',
   },
   {
@@ -67,7 +68,7 @@ const projects = [
     afterBill: '₹0/month',
     savings: '₹1,80,000/year',
     roi: '3 years',
-    image: 'Solar pump in agricultural field',
+    image: '/Agri-1.png',
     description: 'AC solar pump for irrigation. Replaced diesel pump, completely eliminating fuel costs and reducing carbon footprint.',
   },
   {
@@ -79,7 +80,7 @@ const projects = [
     afterBill: '₹3,500/month',
     savings: '₹1,74,000/year',
     roi: '5 years',
-    image: 'Hybrid solar with battery backup',
+    image: '/Offgrid.jpg',
     description: 'Hybrid system with battery backup for a luxury villa. Provides power during outages while maximizing savings through net metering.',
   },
 ]
@@ -147,8 +148,14 @@ export default function ProjectsPage() {
                 className="bg-white rounded-xl border border-neutral-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow"
               >
                 {/* IMAGE */}
-                <div className="h-44 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
-                  <Zap className="w-16 h-16 text-primary-400" />
+                <div className="h-44 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={400}
+                    height={176}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 {/* CONTENT */}
