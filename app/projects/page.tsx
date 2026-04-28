@@ -89,7 +89,7 @@ export default function ProjectsPage() {
   return (
     <div className="bg-white">
       {/* Projects Grid */}
-      <section id="projects" className="py-12 bg-gradient-to-b from-white to-primary-50">
+      <section id="projects" className="py-12 mt-20 bg-gradient-to-b from-white to-primary-50">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {projects.map((project) => (
