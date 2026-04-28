@@ -13,8 +13,7 @@ export const metadata: Metadata = {
 const projects = [
   {
     id: 1,
-    title: 'Residential Solar - Rameswaram',
-    location: 'Rameswaram',
+    title: 'Residential Solar Installation',
     size: '5kW On-Grid',
     beforeBill: '₹8,500/month',
     afterBill: '₹1,200/month',
@@ -25,8 +24,7 @@ const projects = [
   },
   {
     id: 2,
-    title: 'Commercial Solar - Ramnad',
-    location: 'Ramnad',
+    title: 'Commercial Solar Installation',
     size: '25kW On-Grid',
     beforeBill: '₹45,000/month',
     afterBill: '₹8,000/month',
@@ -37,8 +35,7 @@ const projects = [
   },
   {
     id: 3,
-    title: 'Industrial Solar - Bharathinagar',
-    location: 'Bharathinagar',
+    title: 'Industrial Solar Installation',
     size: '100kW On-Grid',
     beforeBill: '₹1,80,000/month',
     afterBill: '₹35,000/month',
@@ -49,8 +46,7 @@ const projects = [
   },
   {
     id: 4,
-    title: 'Solar Water Heater - Bangalore',
-    location: 'HSR Layout, Bangalore',
+    title: 'Solar Water Heater System',
     size: '300LPD System',
     beforeBill: '₹2,500/month',
     afterBill: '₹0/month',
@@ -61,8 +57,7 @@ const projects = [
   },
   {
     id: 5,
-    title: 'Agricultural Solar Pump - Rajasthan',
-    location: 'Jodhpur, Rajasthan',
+    title: 'Agricultural Solar Pump',
     size: '10HP Solar Pump',
     beforeBill: '₹15,000/month (diesel)',
     afterBill: '₹0/month',
@@ -73,8 +68,7 @@ const projects = [
   },
   {
     id: 6,
-    title: 'Hybrid System - Hyderabad',
-    location: 'Gachibowli, Hyderabad',
+    title: 'Hybrid Solar System',
     size: '10kW Hybrid',
     beforeBill: '₹18,000/month',
     afterBill: '₹3,500/month',

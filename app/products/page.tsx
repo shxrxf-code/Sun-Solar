@@ -47,7 +47,7 @@ const products = [
   },
   {
     id: 5,
-    name: 'Tier-1 Solar Panel 450W',
+    name: 'Elite Mono Solar Panel 450W',
     category: 'panels',
     image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=400&h=300&fit=crop',
     description: 'Compact high-efficiency panels perfect for residential installations.',
@@ -56,7 +56,7 @@ const products = [
   },
   {
     id: 6,
-    name: 'Solar Inverter 3kW',
+    name: 'Smart MPPT Solar Inverter 3kW',
     category: 'inverters',
     image: '/solar-inverter-x2.jpg',
     description: 'Compact inverter for small homes with WiFi monitoring.',
@@ -65,7 +65,7 @@ const products = [
   },
   {
     id: 7,
-    name: 'Lead Acid Battery 150Ah',
+    name: 'Deep Cycle Tubular Battery 150Ah',
     category: 'batteries',
     image: '/lead-acid-battery-150ah.jpg',
     description: 'Tubular battery with deep discharge capability for off-grid systems.',
@@ -74,7 +74,7 @@ const products = [
   },
   {
     id: 8,
-    name: 'Submersible Solar Pump 5HP',
+    name: 'Submersible Solar Irrigation Pump 5HP',
     category: 'pumps',
     image: '/submersible-solar-pump-5hp.jpg',
     description: 'High-capacity pump for deep wells and large irrigation needs.',
@@ -95,7 +95,7 @@ export default function ProductsPage() {
   return (
     <div className="bg-white">
       {/* Header */}
-      <div className="w-full px-4 sm:px-8 xl:px-16 2xl:px-24 pt-24 sm:pt-32 pb-6 sm:pb-12">
+      <div className="w-full px-6 lg:px-12 xl:px-16 2xl:px-24 pt-24 sm:pt-32 pb-6 sm:pb-12">
         <h1 className="font-poppins text-2xl sm:text-4xl font-semibold text-dark-900">
           Solar Products
         </h1>
@@ -105,7 +105,7 @@ export default function ProductsPage() {
       </div>
 
       {/* Category Filter - Dropdown on Mobile, Pills on Desktop */}
-      <div className="w-full px-4 sm:px-8 xl:px-16 2xl:px-24 pb-4 sm:pb-8">
+      <div className="w-full px-6 lg:px-12 xl:px-16 2xl:px-24 pb-4 sm:pb-8">
         {/* Mobile Dropdown */}
         <div className="sm:hidden relative">
           <select
@@ -141,8 +141,8 @@ export default function ProductsPage() {
       </div>
 
       {/* Product Grid */}
-      <div className="w-full px-4 sm:px-8 xl:px-16 2xl:px-24 pb-6 sm:pb-10 bg-gray-50 sm:bg-white">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 mt-5 sm:mt-10">
+      <div className="w-full px-6 lg:px-12 xl:px-16 2xl:px-24 pb-6 sm:pb-10 bg-gray-50 sm:bg-white">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,320px))] gap-6 mt-5 sm:mt-10 items-stretch">
           {filteredProducts.map((product, index) => (
             <motion.div
               key={product.id}
@@ -150,28 +150,26 @@ export default function ProductsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
             >
-              <Card className="group h-full overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 sm:border-transparent sm:group-hover:border-primary-200 sm:hover:shadow-xl sm:hover:shadow-primary-100 sm:transform sm:hover:-translate-y-2">
+              <Card className="group h-full overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 sm:border-transparent sm:group-hover:border-primary-200 sm:hover:shadow-xl sm:hover:shadow-primary-100 sm:transform sm:hover:-translate-y-2 flex flex-col max-w-[320px] mx-auto w-full">
                 {/* Mobile: Horizontal layout */}
                 <div className="sm:hidden flex gap-3 p-3">
-                  <div className="overflow-hidden bg-gray-100 relative w-24 aspect-square rounded-lg flex-shrink-0">
+                  <div className="overflow-hidden bg-gray-100 relative w-20 aspect-[4/3] rounded-lg flex-shrink-0">
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
-                      sizes="96px"
+                      sizes="80px"
                       className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     />
                   </div>
                   <div className="flex-1 min-w-0 flex flex-col">
-                    <div>
-                      <h3 className="font-poppins text-sm font-medium text-dark-900 mb-1 group-hover:text-primary-600 transition-colors line-clamp-1">
-                        {product.name}
-                      </h3>
-                      <p className="text-xs text-dark-500 line-clamp-2 mb-2">
-                        {product.description}
-                      </p>
-                    </div>
-                    <div className="mt-auto">
+                    <h3 className="font-poppins text-sm font-medium text-dark-900 mb-1 group-hover:text-primary-600 transition-colors line-clamp-1">
+                      {product.name}
+                    </h3>
+                    <p className="text-xs text-dark-500 line-clamp-2 flex-grow">
+                      {product.description}
+                    </p>
+                    <div className="mt-auto pt-2">
                       <Link href="/contact">
                         <Button size="sm" className="w-full text-xs px-2 py-1.5 group-hover:scale-[1.02] transition-transform">
                           Get Quote
@@ -183,7 +181,7 @@ export default function ProductsPage() {
                 </div>
 
                 {/* Desktop: Vertical layout */}
-                <div className="hidden sm:block">
+                <div className="hidden sm:block flex flex-col h-full">
                   <div className="overflow-hidden bg-gray-100 relative aspect-[4/3]">
                     <Image
                       src={product.image}
@@ -193,19 +191,19 @@ export default function ProductsPage() {
                       className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-5">
-                    <h3 className="font-poppins text-lg font-semibold text-dark-900 mb-2 group-hover:text-primary-600 transition-colors">
+                  <div className="p-4 flex flex-col flex-grow">
+                    <h3 className="font-poppins text-base font-semibold text-dark-900 mb-1 group-hover:text-primary-600 transition-colors">
                       {product.name}
                     </h3>
-                    <p className="text-sm text-dark-600 mb-4 line-clamp-2">
+                    <p className="text-xs text-dark-600 mb-3 line-clamp-2 flex-grow">
                       {product.description}
                     </p>
 
-                    <div className="flex items-center justify-center pt-3 border-t border-gray-100">
+                    <div className="mt-auto pt-2 border-t border-gray-100">
                       <Link href="/contact">
-                        <Button size="sm" className="group-hover:scale-[1.03] transition-transform">
+                        <Button size="sm" className="group-hover:scale-[1.03] transition-transform w-full text-xs py-2">
                           Get Quote
-                          <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
                         </Button>
                       </Link>
                     </div>
@@ -225,7 +223,7 @@ export default function ProductsPage() {
 
       {/* CTA Section */}
       <div className="bg-primary-50">
-        <div className="w-full px-8 xl:px-16 2xl:px-24 py-16 text-center">
+        <div className="w-full px-6 lg:px-12 xl:px-16 2xl:px-24 py-16 text-center">
           <h2 className="font-poppins text-3xl font-semibold text-dark-900 mb-4">
             Not sure which product is right for you?
           </h2>

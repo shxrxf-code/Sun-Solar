@@ -14,8 +14,7 @@ const Brands = React.memo(function Brands() {
     { name: 'Tribox', logo: '/brands/tribox.png' },
     { name: 'Exide Solar', logo: '/brands/exide.png' },
     { name: 'UTL Solar', logo: '/brands/utl.png' },
-    { name: 'BlackBox Solar', logo: '/brands/blackbox.png' },
-    { name: 'Vikram Solar', logo: '/brands/vikram.png' },
+        { name: 'Vikram Solar', logo: '/brands/vikram.png' },
   ]
 
   return (
