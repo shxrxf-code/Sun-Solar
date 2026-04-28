@@ -150,26 +150,8 @@ export default function ProductsPage() {
                   <p className="text-sm text-dark-600 mb-4 line-clamp-2">
                     {product.description}
                   </p>
-                  
-                  <div className="space-y-2 mb-4">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">Power:</span>
-                      <span className="font-medium text-dark-900">{product.specs.watt}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">Efficiency:</span>
-                      <span className="font-medium text-dark-900">{product.specs.efficiency}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">Warranty:</span>
-                      <span className="font-medium text-dark-900">{product.specs.warranty}</span>
-                    </div>
-                  </div>
 
-                  <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                    <span className="text-primary-600 font-semibold text-sm">
-                      {product.price}
-                    </span>
+                  <div className="flex items-center justify-center pt-3 border-t border-gray-100">
                     <Link href="/contact">
                       <Button size="sm" className="group-hover:scale-[1.03] transition-transform">
                         Get Quote

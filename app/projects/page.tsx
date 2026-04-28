@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 const projects = [
   {
     id: 1,
-    title: 'Residential Solar - Delhi',
-    location: 'Vasant Kunj, Delhi',
+    title: 'Residential Solar - Ramanathapuram',
+    location: 'Ramanathapuram',
     size: '5kW On-Grid',
     beforeBill: '₹8,500/month',
     afterBill: '₹1,200/month',
@@ -88,56 +88,6 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <div className="bg-white">
-      {/* Premium Header with Stats */}
-      <section className="py-20 bg-gradient-to-b from-white to-primary-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-16 2xl:px-24">
-
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-
-            {/* LEFT CONTENT */}
-            <div>
-              <div className="w-12 h-1 bg-primary-600 rounded mb-4"></div>
-
-              <h2 className="font-poppins text-4xl md:text-5xl font-bold text-dark-900 leading-tight">
-                Real Solar Projects <br />
-                <span className="text-primary-600">Across India</span>
-              </h2>
-
-              <p className="text-dark-600 mt-3 max-w-lg">
-                Real installations. Real savings. See how we&apos;ve helped 1000+ customers
-                reduce electricity bills and switch to clean, sustainable energy.
-              </p>
-            </div>
-
-            {/* RIGHT SIDE (STATS / TRUST BLOCK) */}
-            <div className="grid grid-cols-2 gap-6">
-
-              <div className="bg-white p-6 rounded-xl shadow text-center">
-                <h3 className="text-2xl font-bold text-primary-600">1000+</h3>
-                <p className="text-sm text-dark-600">Installations</p>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl shadow text-center">
-                <h3 className="text-2xl font-bold text-primary-600">₹50Cr+</h3>
-                <p className="text-sm text-dark-600">Savings Generated</p>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl shadow text-center">
-                <h3 className="text-2xl font-bold text-primary-600">15+</h3>
-                <p className="text-sm text-dark-600">Years Experience</p>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl shadow text-center">
-                <h3 className="text-2xl font-bold text-primary-600">100%</h3>
-                <p className="text-sm text-dark-600">Customer Satisfaction</p>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      </section>
-
       {/* Projects Grid */}
       <section id="projects" className="py-12 bg-gradient-to-b from-white to-primary-50">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
@@ -163,11 +113,6 @@ export default function ProjectsPage() {
                   <h3 className="text-base font-semibold text-neutral-900">
                     {project.title}
                   </h3>
-
-                  <div className="flex items-center text-xs text-neutral-500">
-                    <MapPin className="w-3 h-3 mr-1" />
-                    {project.location}
-                  </div>
 
                   <div className="inline-block bg-primary-100 text-primary-700 px-2 py-0.5 rounded-full text-xs font-semibold">
                     {project.size}
