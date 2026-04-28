@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Zap, ArrowRight } from 'lucide-react'
+import { Zap, ArrowRight, ChevronDown } from 'lucide-react'
 import Button from '@/ui/Button'
 import Card from '@/ui/Card'
 import Link from 'next/link'
@@ -95,18 +95,35 @@ export default function ProductsPage() {
   return (
     <div className="bg-white">
       {/* Header */}
-      <div className="w-full px-8 xl:px-16 2xl:px-24 pt-32 pb-12">
-        <h1 className="font-poppins text-4xl font-semibold text-dark-900">
-          Our Solar Products
+      <div className="w-full px-4 sm:px-8 xl:px-16 2xl:px-24 pt-24 sm:pt-32 pb-6 sm:pb-12">
+        <h1 className="font-poppins text-2xl sm:text-4xl font-semibold text-dark-900">
+          Solar Products
         </h1>
-        <p className="text-lg text-dark-600 mt-4 max-w-xl">
-          High-quality solar solutions for homes and businesses
+        <p className="text-sm sm:text-lg text-dark-600 mt-1 sm:mt-4 max-w-xl">
+          Smart energy solutions for modern homes
         </p>
       </div>
 
-      {/* Category Filter */}
-      <div className="w-full px-8 xl:px-16 2xl:px-24 pb-8">
-        <div className="flex flex-wrap gap-3">
+      {/* Category Filter - Dropdown on Mobile, Pills on Desktop */}
+      <div className="w-full px-4 sm:px-8 xl:px-16 2xl:px-24 pb-4 sm:pb-8">
+        {/* Mobile Dropdown */}
+        <div className="sm:hidden relative">
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="w-full px-4 py-3 pr-10 rounded-lg border border-gray-200 bg-white text-dark-900 font-medium focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent appearance-none"
+          >
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+          <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
+        </div>
+
+        {/* Desktop Pills */}
+        <div className="hidden sm:flex flex-wrap gap-3">
           {categories.map((category) => (
             <button
               key={category}
@@ -124,8 +141,8 @@ export default function ProductsPage() {
       </div>
 
       {/* Product Grid */}
-      <div className="w-full px-8 xl:px-16 2xl:px-24 pb-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 mt-10">
+      <div className="w-full px-4 sm:px-8 xl:px-16 2xl:px-24 pb-16 sm:pb-20 bg-gray-50 sm:bg-white">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 mt-5 sm:mt-10">
           {filteredProducts.map((product, index) => (
             <motion.div
               key={product.id}
@@ -133,31 +150,65 @@ export default function ProductsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
             >
-              <Card className="group h-full overflow-hidden border border-transparent group-hover:border-primary-200 shadow-sm hover:shadow-xl hover:shadow-primary-100 transition-all duration-300 transform hover:-translate-y-2">
-                <div className="overflow-hidden bg-gray-100 relative h-48">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                  />
+              <Card className="group h-full overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 sm:border-transparent sm:group-hover:border-primary-200 sm:hover:shadow-xl sm:hover:shadow-primary-100 sm:transform sm:hover:-translate-y-2">
+                {/* Mobile: Horizontal layout */}
+                <div className="sm:hidden flex gap-3 p-3">
+                  <div className="overflow-hidden bg-gray-100 relative w-24 h-24 rounded-lg flex-shrink-0">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      sizes="96px"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0 flex flex-col">
+                    <div>
+                      <h3 className="font-poppins text-sm font-medium text-dark-900 mb-1 group-hover:text-primary-600 transition-colors line-clamp-1">
+                        {product.name}
+                      </h3>
+                      <p className="text-xs text-dark-500 line-clamp-2 mb-2">
+                        {product.description}
+                      </p>
+                    </div>
+                    <div className="mt-auto">
+                      <Link href="/contact">
+                        <Button size="sm" className="w-full text-xs px-2 py-1.5 group-hover:scale-[1.02] transition-transform">
+                          Get Quote
+                          <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-5">
-                  <h3 className="font-poppins text-lg font-semibold text-dark-900 mb-2 group-hover:text-primary-600 transition-colors">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-dark-600 mb-4 line-clamp-2">
-                    {product.description}
-                  </p>
 
-                  <div className="flex items-center justify-center pt-3 border-t border-gray-100">
-                    <Link href="/contact">
-                      <Button size="sm" className="group-hover:scale-[1.03] transition-transform">
-                        Get Quote
-                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </Link>
+                {/* Desktop: Vertical layout */}
+                <div className="hidden sm:block">
+                  <div className="overflow-hidden bg-gray-100 relative h-48">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-poppins text-lg font-semibold text-dark-900 mb-2 group-hover:text-primary-600 transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-dark-600 mb-4 line-clamp-2">
+                      {product.description}
+                    </p>
+
+                    <div className="flex items-center justify-center pt-3 border-t border-gray-100">
+                      <Link href="/contact">
+                        <Button size="sm" className="group-hover:scale-[1.03] transition-transform">
+                          Get Quote
+                          <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </Card>
