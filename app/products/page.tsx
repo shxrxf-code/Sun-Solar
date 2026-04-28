@@ -40,7 +40,7 @@ const products = [
     id: 4,
     name: 'Solar Water Pump 2HP',
     category: 'pumps',
-    image: 'https://images.unsplash.com/photo-1595278069441-2cf29f8005a6?w=400&h=300&fit=crop',
+    image: '/solar-water-pump-2hp.jpg',
     description: 'AC/DC compatible solar pump for irrigation and agricultural use.',
     specs: { watt: '2HP', efficiency: '40%', warranty: '2 years' },
     price: '₹25,000 - ₹30,000',
@@ -76,7 +76,7 @@ const products = [
     id: 8,
     name: 'Submersible Solar Pump 5HP',
     category: 'pumps',
-    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=300&fit=crop',
+    image: '/submersible-solar-pump-5hp.jpg',
     description: 'High-capacity pump for deep wells and large irrigation needs.',
     specs: { watt: '5HP', efficiency: '45%', warranty: '2 years' },
     price: '₹45,000 - ₹55,000',
@@ -141,7 +141,7 @@ export default function ProductsPage() {
       </div>
 
       {/* Product Grid */}
-      <div className="w-full px-4 sm:px-8 xl:px-16 2xl:px-24 pb-16 sm:pb-20 bg-gray-50 sm:bg-white">
+      <div className="w-full px-4 sm:px-8 xl:px-16 2xl:px-24 pb-6 sm:pb-10 bg-gray-50 sm:bg-white">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 mt-5 sm:mt-10">
           {filteredProducts.map((product, index) => (
             <motion.div
@@ -153,7 +153,7 @@ export default function ProductsPage() {
               <Card className="group h-full overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 sm:border-transparent sm:group-hover:border-primary-200 sm:hover:shadow-xl sm:hover:shadow-primary-100 sm:transform sm:hover:-translate-y-2">
                 {/* Mobile: Horizontal layout */}
                 <div className="sm:hidden flex gap-3 p-3">
-                  <div className="overflow-hidden bg-gray-100 relative w-24 h-24 rounded-lg flex-shrink-0">
+                  <div className="overflow-hidden bg-gray-100 relative w-24 aspect-square rounded-lg flex-shrink-0">
                     <Image
                       src={product.image}
                       alt={product.name}
@@ -184,7 +184,7 @@ export default function ProductsPage() {
 
                 {/* Desktop: Vertical layout */}
                 <div className="hidden sm:block">
-                  <div className="overflow-hidden bg-gray-100 relative h-48">
+                  <div className="overflow-hidden bg-gray-100 relative aspect-[4/3]">
                     <Image
                       src={product.image}
                       alt={product.name}
