@@ -1,13 +1,26 @@
 import type { Metadata } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
+import dynamic from 'next/dynamic'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import WhatsAppButton from '@/components/WhatsAppButton'
-import LeadPopup from '@/components/LeadPopup'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
-const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-poppins', display: 'swap' })
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'sans-serif'],
+})
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-poppins',
+  display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'sans-serif'],
+})
 
 export const metadata: Metadata = {
   title: 'Sun Solar Power Systems | Cut Electricity Bills by 95%',
@@ -23,51 +36,53 @@ export const metadata: Metadata = {
     title: 'Sun Solar Power Systems | Cut Electricity Bills by 95%',
     description: 'Premium solar installation services. 15+ years experience, 1000+ installations.',
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: 'Sun Solar Power Systems',
-    description: 'Premium solar installation services with 15+ years experience and 1000+ installations across India.',
-    url: 'https://www.sunsolar.com',
-    telephone: '+917708001737',
-    email: 'sunsolarpowersystems@gmail.com',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '123 Solar Street',
-      addressLocality: 'Green Energy Park',
-      addressRegion: 'New Delhi',
-      postalCode: '110001',
-      addressCountry: 'IN',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: '28.588550',
-      longitude: '77.208987',
-    },
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '09:00',
-      closes: '19:00',
-    },
-    priceRange: '₹₹₹',
-  }
+// Dynamically import heavy client components with SSR disabled for non-critical UI
+const WhatsAppButton = dynamic(
+  () => import('@/components/WhatsAppButton'),
+  { ssr: false }
+)
 
+const LeadPopup = dynamic(
+  () => import('@/components/LeadPopup'),
+  { ssr: false }
+)
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Sun Solar Power Systems',
+  description: 'Premium solar installation services with 15+ years experience and 1000+ installations across India.',
+  url: 'https://www.sunsolar.com',
+  telephone: '+917708001737',
+  email: 'sunsolarpowersystems@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '123 Solar Street',
+    addressLocality: 'Green Energy Park',
+    addressRegion: 'New Delhi',
+    postalCode: '110001',
+    addressCountry: 'IN',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: '28.588550', longitude: '77.208987' },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    opens: '09:00',
+    closes: '19:00',
+  },
+  priceRange: '₹₹₹',
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <head>
-        <link rel="icon" href="/sunsolar-logo.png" />
+        <link rel="icon" href="/sunsolar-logo.png" sizes="any" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -75,7 +90,7 @@ export default function RootLayout({
       </head>
       <body className="font-inter bg-white overflow-x-hidden">
         <Navbar />
-        <main className="w-full pt-4">
+        <main className="w-full pt-20">
           {children}
         </main>
         <Footer />

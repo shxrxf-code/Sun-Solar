@@ -1,0 +1,1 @@
+"use strict";exports.id=161,exports.ids=[161],exports.modules={3161:(t,e,o)=>{o.r(e),o.d(e,{default:()=>r});let r=(0,o(8570).createProxy)(String.raw`/home/gojo/Projects/Sun-Solar/components/WhatsAppButton.tsx#default`)}};

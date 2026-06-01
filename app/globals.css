@@ -12,6 +12,10 @@
     --text-sm: 0.9rem;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   html, body {
     margin: 0;
     padding: 0;
@@ -23,6 +27,9 @@
   body {
     color: rgb(var(--foreground-rgb));
     background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   section {
@@ -40,7 +47,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
@@ -48,7 +55,7 @@
   .glass {
     @apply bg-white/80 backdrop-blur-md border border-white/20;
   }
-  
+
   .glass-dark {
     @apply bg-dark-900/80 backdrop-blur-md border border-dark-700/20;
   }
@@ -60,23 +67,48 @@
   .btn-glow {
     @apply shadow-lg shadow-primary-500/30 hover:shadow-primary-500/50 transition-shadow duration-300;
   }
+
+  /* Content visibility for below-fold sections */
+  .content-visibility-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 500px;
+  }
 }
 
 @keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-scroll {
   display: flex;
   width: max-content;
-  animation: scroll 25s linear infinite;
+  animation: scroll 30s linear infinite;
+  /* GPU-accelerated animation */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
 }
 
 .animate-scroll:hover {
   animation-play-state: paused;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-scroll {
+    animation: none;
+  }
 }

@@ -1,100 +1,106 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { Zap, ArrowRight, ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import Button from '@/ui/Button'
 import Card from '@/ui/Card'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useReducedMotion, fadeUp } from '@/hooks/useReducedMotion'
 
 const products = [
-  {
-    id: 1,
-    name: 'Tier-1 Solar Panel 540W',
-    category: 'panels',
-    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&h=300&fit=crop',
-    description: 'High-efficiency monocrystalline solar panels with 21% efficiency rate.',
-    specs: { watt: '540W', efficiency: '21%', warranty: '25 years' },
-    price: '₹18,000 - ₹22,000',
-  },
-  {
-    id: 2,
-    name: 'Solar Inverter 5kW',
-    category: 'inverters',
-    image: '/exide-inverter-x1.jpg',
-    description: 'Pure sine wave inverter with MPPT technology for optimal performance.',
-    specs: { watt: '5kW', efficiency: '97%', warranty: '5 years' },
-    price: '₹35,000 - ₹45,000',
-  },
-  {
-    id: 3,
-    name: 'Lithium Battery 5kWh',
-    category: 'batteries',
-    image: '/lithium-battery-5kwh.jpg',
-    description: 'Long-lasting lithium battery with 10-year lifespan and smart BMS.',
-    specs: { watt: '5kWh', efficiency: '95%', warranty: '10 years' },
-    price: '₹1,50,000 - ₹1,80,000',
-  },
-  {
-    id: 4,
-    name: 'Solar Water Pump 2HP',
-    category: 'pumps',
-    image: '/solar-water-pump-2hp.jpg',
-    description: 'AC/DC compatible solar pump for irrigation and agricultural use.',
-    specs: { watt: '2HP', efficiency: '40%', warranty: '2 years' },
-    price: '₹25,000 - ₹30,000',
-  },
-  {
-    id: 5,
-    name: 'Elite Mono Solar Panel 450W',
-    category: 'panels',
-    image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=400&h=300&fit=crop',
-    description: 'Compact high-efficiency panels perfect for residential installations.',
-    specs: { watt: '450W', efficiency: '20%', warranty: '25 years' },
-    price: '₹15,000 - ₹18,000',
-  },
-  {
-    id: 6,
-    name: 'Smart MPPT Solar Inverter 3kW',
-    category: 'inverters',
-    image: '/solar-inverter-x2.jpg',
-    description: 'Compact inverter for small homes with WiFi monitoring.',
-    specs: { watt: '3kW', efficiency: '96%', warranty: '5 years' },
-    price: '₹25,000 - ₹32,000',
-  },
-  {
-    id: 7,
-    name: 'Deep Cycle Tubular Battery 150Ah',
-    category: 'batteries',
-    image: '/lead-acid-battery-150ah.jpg',
-    description: 'Tubular battery with deep discharge capability for off-grid systems.',
-    specs: { watt: '150Ah', efficiency: '85%', warranty: '5 years' },
-    price: '₹12,000 - ₹15,000',
-  },
-  {
-    id: 8,
-    name: 'Submersible Solar Irrigation Pump 5HP',
-    category: 'pumps',
-    image: '/submersible-solar-pump-5hp.jpg',
-    description: 'High-capacity pump for deep wells and large irrigation needs.',
-    specs: { watt: '5HP', efficiency: '45%', warranty: '2 years' },
-    price: '₹45,000 - ₹55,000',
-  },
+  { id: 1, name: 'Tier-1 Solar Panel 540W', category: 'panels', image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&h=300&fit=crop', description: 'High-efficiency monocrystalline solar panels with 21% efficiency rate.', specs: { watt: '540W', efficiency: '21%', warranty: '25 years' }, price: '₹18,000 - ₹22,000' },
+  { id: 2, name: 'Solar Inverter 5kW', category: 'inverters', image: '/exide-inverter-x1.jpg', description: 'Pure sine wave inverter with MPPT technology for optimal performance.', specs: { watt: '5kW', efficiency: '97%', warranty: '5 years' }, price: '₹35,000 - ₹45,000' },
+  { id: 3, name: 'Lithium Battery 5kWh', category: 'batteries', image: '/lithium-battery-5kwh.jpg', description: 'Long-lasting lithium battery with 10-year lifespan and smart BMS.', specs: { watt: '5kWh', efficiency: '95%', warranty: '10 years' }, price: '₹1,50,000 - ₹1,80,000' },
+  { id: 4, name: 'Solar Water Pump 2HP', category: 'pumps', image: '/solar-water-pump-2hp.jpg', description: 'AC/DC compatible solar pump for irrigation and agricultural use.', specs: { watt: '2HP', efficiency: '40%', warranty: '2 years' }, price: '₹25,000 - ₹30,000' },
+  { id: 5, name: 'Elite Mono Solar Panel 450W', category: 'panels', image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=400&h=300&fit=crop', description: 'Compact high-efficiency panels perfect for residential installations.', specs: { watt: '450W', efficiency: '20%', warranty: '25 years' }, price: '₹15,000 - ₹18,000' },
+  { id: 6, name: 'Smart MPPT Solar Inverter 3kW', category: 'inverters', image: '/solar-inverter-x2.jpg', description: 'Compact inverter for small homes with WiFi monitoring.', specs: { watt: '3kW', efficiency: '96%', warranty: '5 years' }, price: '₹25,000 - ₹32,000' },
+  { id: 7, name: 'Deep Cycle Tubular Battery 150Ah', category: 'batteries', image: '/lead-acid-battery-150ah.jpg', description: 'Tubular battery with deep discharge capability for off-grid systems.', specs: { watt: '150Ah', efficiency: '85%', warranty: '5 years' }, price: '₹12,000 - ₹15,000' },
+  { id: 8, name: 'Submersible Solar Irrigation Pump 5HP', category: 'pumps', image: '/submersible-solar-pump-5hp.jpg', description: 'High-capacity pump for deep wells and large irrigation needs.', specs: { watt: '5HP', efficiency: '45%', warranty: '2 years' }, price: '₹45,000 - ₹55,000' },
 ]
 
-const categories = ['All', 'Panels', 'Inverters', 'Batteries', 'Pumps']
+const categories = ['All', 'Panels', 'Inverters', 'Batteries', 'Pumps'] as const
+
+const ProductCard = React.memo(function ProductCard({ product, index, reduceMotion }: {
+  product: typeof products[number]
+  index: number
+  reduceMotion: boolean
+}) {
+  const anim = reduceMotion ? {} : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.4, delay: index * 0.05 } }
+
+  return (
+    <motion.div {...anim}>
+      <Card className="group h-full overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:border-primary-200 hover:shadow-xl flex flex-col max-w-[320px] mx-auto w-full">
+        <div className="sm:hidden flex gap-3 p-3">
+          <div className="overflow-hidden bg-gray-100 relative w-20 aspect-[4/3] rounded-lg flex-shrink-0">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              sizes="80px"
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            />
+          </div>
+          <div className="flex-1 min-w-0 flex flex-col">
+            <h3 className="font-poppins text-sm font-medium text-dark-900 mb-1 group-hover:text-primary-600 transition-colors line-clamp-1">
+              {product.name}
+            </h3>
+            <p className="text-xs text-dark-500 line-clamp-2 flex-grow">{product.description}</p>
+            <div className="mt-auto pt-2">
+              <Link href="/contact">
+                <Button size="sm" className="w-full text-xs px-2 py-1.5">
+                  Get Quote
+                  <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="hidden sm:block flex-col h-full">
+          <div className="overflow-hidden bg-gray-100 relative aspect-[4/3]">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            />
+          </div>
+          <div className="p-4 flex flex-col flex-grow">
+            <h3 className="font-poppins text-base font-semibold text-dark-900 mb-1 group-hover:text-primary-600 transition-colors">
+              {product.name}
+            </h3>
+            <p className="text-xs text-dark-600 mb-3 line-clamp-2 flex-grow">{product.description}</p>
+            <div className="mt-auto pt-2 border-t border-gray-100">
+              <Link href="/contact">
+                <Button size="sm" className="w-full text-xs py-2">
+                  Get Quote
+                  <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  )
+})
 
 export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState('All')
+  const { shouldReduceMotion } = useReducedMotion()
 
-  const filteredProducts = selectedCategory === 'All'
-    ? products
-    : products.filter(p => p.category.toLowerCase() === selectedCategory.toLowerCase())
+  const filteredProducts = useMemo(() =>
+    selectedCategory === 'All'
+      ? products
+      : products.filter(p => p.category.toLowerCase() === selectedCategory.toLowerCase()),
+    [selectedCategory]
+  )
 
   return (
     <div className="bg-white">
-      {/* Header */}
       <div className="w-full px-6 lg:px-12 xl:px-16 2xl:px-24 pt-24 sm:pt-32 pb-6 sm:pb-12">
         <h1 className="font-poppins text-2xl sm:text-4xl font-semibold text-dark-900">
           Solar Products
@@ -104,9 +110,7 @@ export default function ProductsPage() {
         </p>
       </div>
 
-      {/* Category Filter - Dropdown on Mobile, Pills on Desktop */}
       <div className="w-full px-6 lg:px-12 xl:px-16 2xl:px-24 pb-4 sm:pb-8">
-        {/* Mobile Dropdown */}
         <div className="sm:hidden relative">
           <select
             value={selectedCategory}
@@ -114,21 +118,18 @@ export default function ProductsPage() {
             className="w-full px-4 py-3 pr-10 rounded-lg border border-gray-200 bg-white text-dark-900 font-medium focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent appearance-none"
           >
             {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
+              <option key={category} value={category}>{category}</option>
             ))}
           </select>
-          <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
+          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
         </div>
 
-        {/* Desktop Pills */}
         <div className="hidden sm:flex flex-wrap gap-3">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-5 py-2 rounded-lg font-medium transition-all duration-200 ${
+              className={`px-5 py-2 rounded-lg font-medium transition-colors duration-200 ${
                 selectedCategory === category
                   ? 'bg-primary-600 text-white shadow-md'
                   : 'bg-gray-100 text-dark-700 hover:bg-gray-200'
@@ -140,77 +141,10 @@ export default function ProductsPage() {
         </div>
       </div>
 
-      {/* Product Grid */}
       <div className="w-full px-6 lg:px-12 xl:px-16 2xl:px-24 pb-6 sm:pb-10 bg-gray-50 sm:bg-white">
         <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,320px))] gap-6 mt-5 sm:mt-10 items-stretch">
           {filteredProducts.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-            >
-              <Card className="group h-full overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 sm:border-transparent sm:group-hover:border-primary-200 sm:hover:shadow-xl sm:hover:shadow-primary-100 sm:transform sm:hover:-translate-y-2 flex flex-col max-w-[320px] mx-auto w-full">
-                {/* Mobile: Horizontal layout */}
-                <div className="sm:hidden flex gap-3 p-3">
-                  <div className="overflow-hidden bg-gray-100 relative w-20 aspect-[4/3] rounded-lg flex-shrink-0">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      sizes="80px"
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0 flex flex-col">
-                    <h3 className="font-poppins text-sm font-medium text-dark-900 mb-1 group-hover:text-primary-600 transition-colors line-clamp-1">
-                      {product.name}
-                    </h3>
-                    <p className="text-xs text-dark-500 line-clamp-2 flex-grow">
-                      {product.description}
-                    </p>
-                    <div className="mt-auto pt-2">
-                      <Link href="/contact">
-                        <Button size="sm" className="w-full text-xs px-2 py-1.5 group-hover:scale-[1.02] transition-transform">
-                          Get Quote
-                          <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Desktop: Vertical layout */}
-                <div className="hidden sm:block flex flex-col h-full">
-                  <div className="overflow-hidden bg-gray-100 relative aspect-[4/3]">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-4 flex flex-col flex-grow">
-                    <h3 className="font-poppins text-base font-semibold text-dark-900 mb-1 group-hover:text-primary-600 transition-colors">
-                      {product.name}
-                    </h3>
-                    <p className="text-xs text-dark-600 mb-3 line-clamp-2 flex-grow">
-                      {product.description}
-                    </p>
-
-                    <div className="mt-auto pt-2 border-t border-gray-100">
-                      <Link href="/contact">
-                        <Button size="sm" className="group-hover:scale-[1.03] transition-transform w-full text-xs py-2">
-                          Get Quote
-                          <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
+            <ProductCard key={product.id} product={product} index={index} reduceMotion={shouldReduceMotion} />
           ))}
         </div>
 
@@ -221,7 +155,6 @@ export default function ProductsPage() {
         )}
       </div>
 
-      {/* CTA Section */}
       <div className="bg-primary-50">
         <div className="w-full px-6 lg:px-12 xl:px-16 2xl:px-24 py-16 text-center">
           <h2 className="font-poppins text-3xl font-semibold text-dark-900 mb-4">

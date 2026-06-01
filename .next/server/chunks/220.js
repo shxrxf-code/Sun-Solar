@@ -1,0 +1,1 @@
+"use strict";exports.id=220,exports.ids=[220],exports.modules={9220:(e,o,t)=>{t.r(o),t.d(o,{default:()=>r});let r=(0,t(8570).createProxy)(String.raw`/home/gojo/Projects/Sun-Solar/components/LeadPopup.tsx#default`)}};

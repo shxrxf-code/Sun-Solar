@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
-import { MapPin, Zap, TrendingUp, Calendar, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Button from '@/ui/Button'
-import Card from '@/ui/Card'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -11,78 +10,17 @@ export const metadata: Metadata = {
 }
 
 const projects = [
-  {
-    id: 1,
-    title: 'Residential Solar Installation',
-    size: '5kW On-Grid',
-    beforeBill: '₹8,500/month',
-    afterBill: '₹1,200/month',
-    savings: '₹88,000/year',
-    roi: '4.5 years',
-    image: '/Ongrid.jpg',
-    description: 'Complete rooftop solar installation for a 3BHK apartment. System includes premium Tata Power Solar panels with 25-year warranty.',
-  },
-  {
-    id: 2,
-    title: 'Commercial Solar Installation',
-    size: '25kW On-Grid',
-    beforeBill: '₹45,000/month',
-    afterBill: '₹8,000/month',
-    savings: '₹4,44,000/year',
-    roi: '4 years',
-    image: '/Agri-2.jpeg',
-    description: 'Large-scale commercial installation for a software company. System designed to handle peak load requirements with net metering.',
-  },
-  {
-    id: 3,
-    title: 'Industrial Solar Installation',
-    size: '100kW On-Grid',
-    beforeBill: '₹1,80,000/month',
-    afterBill: '₹35,000/month',
-    savings: '₹17,40,000/year',
-    roi: '3.5 years',
-    image: '/Agri-3.jpg',
-    description: 'Industrial solar installation for a textile manufacturing unit. Custom-designed system to reduce operational costs significantly.',
-  },
-  {
-    id: 4,
-    title: 'Solar Water Heater System',
-    size: '300LPD System',
-    beforeBill: '₹2,500/month',
-    afterBill: '₹0/month',
-    savings: '₹30,000/year',
-    roi: '2 years',
-    image: '/solar-water-heater.jpg',
-    description: 'ETC type solar water heater for a villa. Provides hot water for 300 liters daily with zero electricity cost.',
-  },
-  {
-    id: 5,
-    title: 'Agricultural Solar Pump',
-    size: '10HP Solar Pump',
-    beforeBill: '₹15,000/month (diesel)',
-    afterBill: '₹0/month',
-    savings: '₹1,80,000/year',
-    roi: '3 years',
-    image: '/Agri-1.png',
-    description: 'AC solar pump for irrigation. Replaced diesel pump, completely eliminating fuel costs and reducing carbon footprint.',
-  },
-  {
-    id: 6,
-    title: 'Hybrid Solar System',
-    size: '10kW Hybrid',
-    beforeBill: '₹18,000/month',
-    afterBill: '₹3,500/month',
-    savings: '₹1,74,000/year',
-    roi: '5 years',
-    image: '/Offgrid.jpg',
-    description: 'Hybrid system with battery backup for a luxury villa. Provides power during outages while maximizing savings through net metering.',
-  },
+  { id: 1, title: 'Residential Solar Installation', size: '5kW On-Grid', beforeBill: '₹8,500/month', afterBill: '₹1,200/month', savings: '₹88,000/year', roi: '4.5 years', image: '/Ongrid.jpg', description: 'Complete rooftop solar installation for a 3BHK apartment. System includes premium Tata Power Solar panels with 25-year warranty.' },
+  { id: 2, title: 'Commercial Solar Installation', size: '25kW On-Grid', beforeBill: '₹45,000/month', afterBill: '₹8,000/month', savings: '₹4,44,000/year', roi: '4 years', image: '/Agri-2.jpeg', description: 'Large-scale commercial installation for a software company. System designed to handle peak load requirements with net metering.' },
+  { id: 3, title: 'Industrial Solar Installation', size: '100kW On-Grid', beforeBill: '₹1,80,000/month', afterBill: '₹35,000/month', savings: '₹17,40,000/year', roi: '3.5 years', image: '/Agri-3.jpg', description: 'Industrial solar installation for a textile manufacturing unit. Custom-designed system to reduce operational costs significantly.' },
+  { id: 4, title: 'Solar Water Heater System', size: '300LPD System', beforeBill: '₹2,500/month', afterBill: '₹0/month', savings: '₹30,000/year', roi: '2 years', image: '/solar-water-heater.jpg', description: 'ETC type solar water heater for a villa. Provides hot water for 300 liters daily with zero electricity cost.' },
+  { id: 5, title: 'Agricultural Solar Pump', size: '10HP Solar Pump', beforeBill: '₹15,000/month (diesel)', afterBill: '₹0/month', savings: '₹1,80,000/year', roi: '3 years', image: '/Agri-1.png', description: 'AC solar pump for irrigation. Replaced diesel pump, completely eliminating fuel costs and reducing carbon footprint.' },
+  { id: 6, title: 'Hybrid Solar System', size: '10kW Hybrid', beforeBill: '₹18,000/month', afterBill: '₹3,500/month', savings: '₹1,74,000/year', roi: '5 years', image: '/Offgrid.jpg', description: 'Hybrid system with battery backup for a luxury villa. Provides power during outages while maximizing savings through net metering.' },
 ]
 
 export default function ProjectsPage() {
   return (
     <div className="bg-white">
-      {/* Projects Grid */}
       <section id="projects" className="py-12 mt-20 bg-gradient-to-b from-white to-primary-50">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -91,39 +29,27 @@ export default function ProjectsPage() {
                 key={project.id}
                 className="bg-white rounded-xl border border-neutral-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow"
               >
-                {/* IMAGE */}
-                <div className="h-44 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden">
+                <div className="h-44 bg-gradient-to-br from-primary-100 to-primary-200 overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
                     width={400}
                     height={176}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
-
-                {/* CONTENT */}
                 <div className="p-4 space-y-2">
-                  <h3 className="text-base font-semibold text-neutral-900">
-                    {project.title}
-                  </h3>
-
+                  <h3 className="text-base font-semibold text-neutral-900">{project.title}</h3>
                   <div className="inline-block bg-primary-100 text-primary-700 px-2 py-0.5 rounded-full text-xs font-semibold">
                     {project.size}
                   </div>
-
-                  <p className="text-sm text-neutral-500 line-clamp-2">
-                    {project.description}
-                  </p>
-
-                  {/* META */}
+                  <p className="text-sm text-neutral-500 line-clamp-2">{project.description}</p>
                   <div className="flex justify-between text-xs text-neutral-400 pt-1">
                     <span>{project.savings}</span>
                     <span>{project.roi}</span>
                   </div>
-
-                  {/* CTA */}
-                  <button className="w-full mt-2 h-9 rounded-lg bg-green-600 text-white text-sm font-medium hover:bg-green-700 transition">
+                  <button className="w-full mt-2 h-9 rounded-lg bg-green-600 text-white text-sm font-medium hover:bg-green-700 transition-colors">
                     View Project →
                   </button>
                 </div>
@@ -133,9 +59,8 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-20 bg-gradient-to-b from-primary-50 to-white">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center px-6">
           <h2 className="text-3xl lg:text-4xl font-bold text-dark-900 mb-6">
             Want Similar Savings?
           </h2>
@@ -152,6 +77,7 @@ export default function ProjectsPage() {
           </div>
         </div>
       </section>
+
     </div>
   )
 }
