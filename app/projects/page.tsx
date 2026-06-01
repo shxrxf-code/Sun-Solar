@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
-import { ArrowRight } from 'lucide-react'
-import Button from '@/ui/Button'
+import { ArrowRight, TrendingUp, Calendar, Zap } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -18,40 +17,109 @@ const projects = [
   { id: 6, title: 'Hybrid Solar System', size: '10kW Hybrid', beforeBill: '₹18,000/month', afterBill: '₹3,500/month', savings: '₹1,74,000/year', roi: '5 years', image: '/Offgrid.jpg', description: 'Hybrid system with battery backup for a luxury villa. Provides power during outages while maximizing savings through net metering.' },
 ]
 
+const stats = [
+  { label: 'Total Savings', value: '₹9Cr+', icon: TrendingUp },
+  { label: 'Projects Delivered', value: '1000+', icon: Zap },
+  { label: 'Avg. ROI Period', value: '3.5 Yrs', icon: Calendar },
+]
+
 export default function ProjectsPage() {
   return (
     <div className="bg-white">
-      <section id="projects" className="py-12 mt-20 bg-gradient-to-b from-white to-primary-50">
-        <div className="max-w-6xl mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <section id="projects" className="pt-28 pb-24 bg-white">
+        <div className="w-full px-6 lg:px-10 xl:px-16 2xl:px-24">
+          {/* Header */}
+          <div className="max-w-4xl mb-16">
+            <div className="w-12 h-1 bg-primary-500 rounded-full mb-6" />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark-900 leading-tight tracking-tight">
+              Our Projects
+            </h1>
+            <p className="text-lg md:text-xl text-dark-500 mt-4 max-w-2xl leading-relaxed">
+              Real installations, real results. Explore our portfolio of successful solar projects across residential, commercial, and industrial sectors.
+            </p>
+          </div>
+
+          {/* Stats Bar */}
+          <div className="grid grid-cols-3 gap-6 mb-16 py-8 border-y border-dark-100">
+            {stats.map((stat) => {
+              const Icon = stat.icon
+              return (
+                <div key={stat.label} className="flex items-center gap-3 md:gap-4">
+                  <div className="p-2.5 rounded-xl bg-primary-50 flex-shrink-0">
+                    <Icon className="w-5 h-5 text-primary-600" />
+                  </div>
+                  <div>
+                    <p className="text-xl md:text-2xl font-bold text-dark-900">{stat.value}</p>
+                    <p className="text-xs md:text-sm text-dark-500">{stat.label}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Premium Project Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 xl:gap-10">
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="bg-white rounded-xl border border-neutral-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+                className="group bg-white rounded-2xl border border-dark-100 shadow-sm overflow-hidden transition-all duration-300 ease-out hover:shadow-[0_20px_70px_-15px_rgba(0,0,0,0.15)] hover:-translate-y-1 will-change-transform"
               >
-                <div className="h-44 bg-gradient-to-br from-primary-100 to-primary-200 overflow-hidden">
+                {/* Image */}
+                <div className="relative h-56 md:h-60 xl:h-64 overflow-hidden bg-dark-100">
                   <Image
                     src={project.image}
                     alt={project.title}
-                    width={400}
-                    height={176}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-4 left-4">
+                    <span className="inline-block bg-white/95 backdrop-blur-sm text-dark-900 px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm">
+                      {project.size}
+                    </span>
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    <span className="inline-flex items-center gap-1.5 bg-primary-500/95 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm">
+                      <Zap className="w-3 h-3" />
+                      {project.roi} ROI
+                    </span>
+                  </div>
                 </div>
-                <div className="p-4 space-y-2">
-                  <h3 className="text-base font-semibold text-neutral-900">{project.title}</h3>
-                  <div className="inline-block bg-primary-100 text-primary-700 px-2 py-0.5 rounded-full text-xs font-semibold">
-                    {project.size}
+
+                {/* Content */}
+                <div className="p-6 lg:p-7 xl:p-8 flex flex-col">
+                  <h3 className="text-lg lg:text-xl font-bold text-dark-900 leading-snug group-hover:text-primary-600 transition-colors duration-200">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-sm text-dark-500 mt-3 leading-relaxed line-clamp-2">
+                    {project.description}
+                  </p>
+
+                  {/* Savings Metrics */}
+                  <div className="mt-5 pt-5 border-t border-dark-100">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <p className="text-xs text-dark-400 font-medium uppercase tracking-wider">Annual Savings</p>
+                        <p className="text-base lg:text-lg font-bold text-primary-600 mt-0.5">{project.savings}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs text-dark-400 font-medium uppercase tracking-wider">Payback Period</p>
+                        <p className="text-base lg:text-lg font-bold text-dark-900 mt-0.5">{project.roi}</p>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-sm text-neutral-500 line-clamp-2">{project.description}</p>
-                  <div className="flex justify-between text-xs text-neutral-400 pt-1">
-                    <span>{project.savings}</span>
-                    <span>{project.roi}</span>
-                  </div>
-                  <button className="w-full mt-2 h-9 rounded-lg bg-green-600 text-white text-sm font-medium hover:bg-green-700 transition-colors">
-                    View Project →
-                  </button>
+
+                  {/* CTA */}
+                  <Link
+                    href="/contact"
+                    className="mt-5 inline-flex items-center justify-center gap-2 w-full py-3 px-5 rounded-xl bg-dark-900 text-white text-sm font-semibold hover:bg-primary-600 transition-colors duration-200 group/btn"
+                  >
+                    Get Similar Savings
+                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1" />
+                  </Link>
                 </div>
               </div>
             ))}
@@ -59,25 +127,33 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-primary-50 to-white">
-        <div className="max-w-4xl mx-auto text-center px-6">
-          <h2 className="text-3xl lg:text-4xl font-bold text-dark-900 mb-6">
-            Want Similar Savings?
-          </h2>
-          <p className="text-lg text-dark-600 mb-8">
-            Get a free consultation and discover how much you can save with solar. Our experts will design the perfect system for your needs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <Button size="lg" className="group">
-                Get Free Quote
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
+      {/* CTA Section */}
+      <section className="py-24 bg-gradient-to-b from-primary-50 to-white">
+        <div className="w-full px-6 lg:px-10 xl:px-16 2xl:px-24">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="w-12 h-1 bg-primary-500 rounded-full mb-6 mx-auto" />
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark-900 leading-tight tracking-tight">
+              Want Similar Savings?
+            </h2>
+            <p className="text-lg text-dark-500 mt-4 max-w-xl mx-auto leading-relaxed">
+              Get a free consultation and discover how much you can save with solar. Our experts will design the perfect system for your needs.
+            </p>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact">
+                <button className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white rounded-xl text-base font-semibold hover:bg-primary-700 transition-colors duration-200 shadow-lg shadow-primary-500/25 hover:shadow-xl hover:shadow-primary-500/30">
+                  Get Free Quote
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+              </Link>
+              <Link href="/services">
+                <button className="inline-flex items-center gap-2 px-8 py-4 bg-white text-dark-900 rounded-xl text-base font-semibold border border-dark-200 hover:border-dark-300 transition-colors duration-200 shadow-sm">
+                  View Services
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
-
     </div>
   )
 }
