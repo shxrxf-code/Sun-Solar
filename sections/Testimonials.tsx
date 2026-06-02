@@ -14,12 +14,12 @@ interface Review {
 }
 
 const INITIAL_REVIEWS: Review[] = [
-  { name: 'Rajesh Kumar', location: 'Chennai', text: 'Excellent service! My bill dropped from ₹8,000 to ₹1,500.', savings: '₹6,500/month' },
-  { name: 'Anita Sharma', location: 'Mumbai', text: 'Professional team and fast installation. Highly recommend!', savings: '₹7,200/month' },
-  { name: 'Vikram Singh', location: 'Bangalore', text: 'Best investment I made. Saving huge every month!', savings: '₹5,800/month' },
-  { name: 'Priya Patel', location: 'Ahmedabad', text: 'Great after-sales support. Very satisfied with the quality.', savings: '₹6,100/month' },
-  { name: 'Suresh Reddy', location: 'Hyderabad', text: 'Got subsidy without any hassle. Smooth experience overall.', savings: '₹5,500/month' },
-  { name: 'Meena Gupta', location: 'Pune', text: 'The team explained everything clearly. Trustworthy service!', savings: '₹6,300/month' },
+  { name: 'Mohamed Ibrahim', location: 'Keelakarai', text: 'Professional installation and excellent customer support. My EB bill has reduced considerably after switching to solar.', savings: '₹4,200/month' },
+  { name: 'Meenakshi', location: 'Ramanathapuram', text: 'Very happy with the solar system performance. The installation process was smooth and hassle-free from start to finish.', savings: '₹3,500/month' },
+  { name: 'Karthikeyan', location: 'Paramakudi', text: 'Best investment for my home. The system is performing perfectly even during peak summer and saving money every month.', savings: '₹5,100/month' },
+  { name: 'Fathima', location: 'Erwadi', text: 'The team explained everything clearly in Tamil and completed the installation on time. Great after-sales support.', savings: '₹2,800/month' },
+  { name: 'Senthil Kumar', location: 'Rameswaram', text: 'The team guided us through the entire subsidy process smoothly. Solar is working efficiently and we are very satisfied.', savings: '₹4,200/month' },
+  { name: 'Kavitha', location: 'Mudukulathur', text: 'Quality workmanship and professional service. My electricity bill has dropped significantly and the system requires no maintenance.', savings: '₹3,500/month' },
 ]
 
 const ReviewCard = React.memo(function ReviewCard({ review, index, reduceMotion }: { review: Review; index: number; reduceMotion: boolean }) {
