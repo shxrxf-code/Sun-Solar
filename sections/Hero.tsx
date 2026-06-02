@@ -7,7 +7,7 @@ const Hero = () => {
     <section className="relative w-full min-h-[80vh] md:min-h-screen flex items-center justify-center text-center overflow-hidden content-visibility-auto">
       <Image
         src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=75"
-        alt="Solar Panels"
+        alt="Sun Solar Power Systems - Rooftop solar panel installation for reducing electricity bills by 95%"
         fill
         priority
         sizes="100vw"

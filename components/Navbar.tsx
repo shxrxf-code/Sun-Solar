@@ -47,7 +47,7 @@ const Navbar = () => {
           <Link href="/" className="flex items-center space-x-2 group">
             <Image
               src="/sunsolar-logo.png"
-              alt="Sun Solar Logo"
+              alt="Sun Solar Power Systems - Home"
               width={48}
               height={48}
               className="h-12 w-auto"

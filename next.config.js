@@ -1,23 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable React strict mode for development best practices
   reactStrictMode: true,
-
-  // Compress assets using gzip/brotli
   compress: true,
-
-  // SWC-based minification (faster than Terser)
   swcMinify: true,
-
-  // Build-time optimizations
   output: 'standalone',
 
   images: {
-    // Optimize images in modern formats
     formats: ['image/avif', 'image/webp'],
-    // Device sizes for responsive image breakpoints
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    // Image sizes for layout shifts
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     remotePatterns: [
       {
@@ -31,11 +21,63 @@ const nextConfig = {
     ],
   },
 
-  // Experimental features for better performance
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
-    optimizeCss: false, // CSS optimization disabled as we use Tailwind
+    optimizeCss: false,
     scrollRestoration: true,
+  },
+
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+        ],
+      },
+      {
+        source: '/images/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/fonts/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/sunsolar-logo.png',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ]
   },
 }
 

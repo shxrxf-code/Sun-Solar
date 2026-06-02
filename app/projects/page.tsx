@@ -3,9 +3,19 @@ import { ArrowRight, TrendingUp, Calendar, Zap } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+const BASE_URL = 'https://www.sunsolar.com'
+
 export const metadata: Metadata = {
-  title: 'Solar Projects | Sun Solar Power Systems',
-  description: 'View our successful solar installations across India. Real case studies with ROI details and customer testimonials.',
+  title: 'Solar Projects & Case Studies',
+  description: 'Real solar installation projects with verified savings data. See how residential, commercial, and agricultural clients save ₹30,000 to ₹17,40,000 annually.',
+  alternates: {
+    canonical: `${BASE_URL}/projects`,
+  },
+  openGraph: {
+    title: 'Solar Projects & Case Studies | Sun Solar Power Systems',
+    description: 'Real solar installation projects with verified savings data across India.',
+    url: `${BASE_URL}/projects`,
+  },
 }
 
 const projects = [
@@ -23,12 +33,25 @@ const stats = [
   { label: 'Avg. ROI Period', value: '3.5 Yrs', icon: Calendar },
 ]
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  '@id': `${BASE_URL}/projects#breadcrumb`,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+    { '@type': 'ListItem', position: 2, name: 'Solar Projects', item: `${BASE_URL}/projects` },
+  ],
+}
+
 export default function ProjectsPage() {
   return (
     <div className="bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <section id="projects" className="pt-28 pb-24 bg-white">
         <div className="w-full px-6 lg:px-10 xl:px-16 2xl:px-24">
-          {/* Header */}
           <div className="max-w-4xl mb-16">
             <div className="w-12 h-1 bg-primary-500 rounded-full mb-6" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark-900 leading-tight tracking-tight">
@@ -39,14 +62,13 @@ export default function ProjectsPage() {
             </p>
           </div>
 
-          {/* Stats Bar */}
           <div className="grid grid-cols-3 gap-6 mb-16 py-8 border-y border-dark-100">
             {stats.map((stat) => {
               const Icon = stat.icon
               return (
                 <div key={stat.label} className="flex items-center gap-3 md:gap-4">
                   <div className="p-2.5 rounded-xl bg-primary-50 flex-shrink-0">
-                    <Icon className="w-5 h-5 text-primary-600" />
+                    <Icon className="w-5 h-5 text-primary-600" aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-xl md:text-2xl font-bold text-dark-900">{stat.value}</p>
@@ -57,18 +79,16 @@ export default function ProjectsPage() {
             })}
           </div>
 
-          {/* Premium Project Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 xl:gap-10">
             {projects.map((project) => (
-              <div
+              <article
                 key={project.id}
                 className="group bg-white rounded-2xl border border-dark-100 shadow-sm overflow-hidden transition-all duration-300 ease-out hover:shadow-[0_20px_70px_-15px_rgba(0,0,0,0.15)] hover:-translate-y-1 will-change-transform"
               >
-                {/* Image */}
                 <div className="relative h-56 md:h-60 xl:h-64 overflow-hidden bg-dark-100">
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={`${project.title} - ${project.size} solar installation case study`}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                     className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
@@ -82,23 +102,21 @@ export default function ProjectsPage() {
                   </div>
                   <div className="absolute top-4 right-4">
                     <span className="inline-flex items-center gap-1.5 bg-primary-500/95 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm">
-                      <Zap className="w-3 h-3" />
+                      <Zap className="w-3 h-3" aria-hidden="true" />
                       {project.roi} ROI
                     </span>
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="p-6 lg:p-7 xl:p-8 flex flex-col">
-                  <h3 className="text-lg lg:text-xl font-bold text-dark-900 leading-snug group-hover:text-primary-600 transition-colors duration-200">
+                  <h2 className="text-lg lg:text-xl font-bold text-dark-900 leading-snug group-hover:text-primary-600 transition-colors duration-200">
                     {project.title}
-                  </h3>
+                  </h2>
 
                   <p className="text-sm text-dark-500 mt-3 leading-relaxed line-clamp-2">
                     {project.description}
                   </p>
 
-                  {/* Savings Metrics */}
                   <div className="mt-5 pt-5 border-t border-dark-100">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
@@ -112,22 +130,21 @@ export default function ProjectsPage() {
                     </div>
                   </div>
 
-                  {/* CTA */}
                   <Link
                     href="/contact"
                     className="mt-5 inline-flex items-center justify-center gap-2 w-full py-3 px-5 rounded-xl bg-dark-900 text-white text-sm font-semibold hover:bg-primary-600 transition-colors duration-200 group/btn"
+                    aria-label={`Get similar savings as ${project.title}`}
                   >
                     Get Similar Savings
-                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1" aria-hidden="true" />
                   </Link>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-24 bg-gradient-to-b from-primary-50 to-white">
         <div className="w-full px-6 lg:px-10 xl:px-16 2xl:px-24">
           <div className="max-w-3xl mx-auto text-center">
@@ -142,7 +159,7 @@ export default function ProjectsPage() {
               <Link href="/contact">
                 <button className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white rounded-xl text-base font-semibold hover:bg-primary-700 transition-colors duration-200 shadow-lg shadow-primary-500/25 hover:shadow-xl hover:shadow-primary-500/30">
                   Get Free Quote
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-5 h-5" aria-hidden="true" />
                 </button>
               </Link>
               <Link href="/services">

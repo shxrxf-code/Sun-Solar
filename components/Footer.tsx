@@ -12,7 +12,7 @@ const Footer = React.memo(function Footer() {
         <div className="flex items-center gap-2">
           <Image
             src="/sunsolar-logo.png"
-            alt="Sun Solar Logo"
+            alt="Sun Solar Power Systems"
             width={32}
             height={32}
             className="h-8 w-auto"
