@@ -1,1 +1,1 @@
-{"version":1,"functions":{"/":{},"/services/on-grid-solar":{},"/services/off-grid-solar":{},"/projects":{},"/contact":{},"/services/solar-panel-installation":{},"/services/solar-water-heater":{},"/services/solar-street-light":{},"/services":{},"/services/solar-water-pump":{}}}
+{"version":1,"functions":{"/":{},"/contact":{},"/projects":{},"/services/on-grid-solar":{},"/services/solar-street-light":{},"/services/solar-panel-installation":{},"/services":{},"/services/solar-water-pump":{},"/services/solar-water-heater":{},"/services/off-grid-solar":{}}}
