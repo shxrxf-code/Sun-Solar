@@ -96,6 +96,8 @@ generate_commit_message() {
 
   if echo "$added" | grep -q -E "scripts/|\.sh$"; then msg+="Scripts, "
   fi
+  if echo "$added" | grep -q -E "\.vercelignore|vercel\.json"; then msg+="Vercel config, "
+  fi
 
   # Theme detection
   if echo "$modified" | grep -q -E "theme|dark|light"; then msg+="Theme, "
