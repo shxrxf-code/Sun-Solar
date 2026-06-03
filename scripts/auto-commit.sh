@@ -46,16 +46,17 @@ CHANGED_FILES=$(git status --short)
 CHANGED_COUNT=$(echo "$CHANGED_FILES" | wc -l)
 log "Detected $CHANGED_COUNT changed file(s)"
 
+# ─── Stage all changes ──────────────────────────────────────────────────────
+log "Staging all changes..."
+git add -A
+ok "All changes staged"
+
 # ─── Generate commit message ────────────────────────────────────────────────
 generate_commit_message() {
   local added modified deleted
   added=$(git diff --cached --name-only --diff-filter=A 2>/dev/null || true)
   modified=$(git diff --cached --name-only --diff-filter=M 2>/dev/null || true)
   deleted=$(git diff --cached --name-only --diff-filter=D 2>/dev/null || true)
-  # also check unstaged for full picture
-  added+=$'\n'$(git diff --name-only --diff-filter=A 2>/dev/null || true)
-  modified+=$'\n'$(git diff --name-only --diff-filter=M 2>/dev/null || true)
-  deleted+=$'\n'$(git diff --name-only --diff-filter=D 2>/dev/null || true)
 
   local msg=""
 
@@ -72,7 +73,6 @@ generate_commit_message() {
     local sections
     sections=$(echo "$added" | grep -E "sections/|components/" | head -3 | sed 's|.*/||;s|\.tsx||')
     for s in $sections; do
-      # camelCase to Title Case
       s_title=$(echo "$s" | sed 's/[A-Z]/ &/g' | sed 's/^ //')
       msg+="${s_title}, "
     done
@@ -81,37 +81,27 @@ generate_commit_message() {
     msg+="Images, "
   fi
 
+  if echo "$added" | grep -q -E "scripts/|\.sh$"; then msg+="Scripts, "
+  fi
+  if echo "$added" | grep -q -E "\.vercelignore|vercel\.json"; then msg+="Vercel config, "
+  fi
+  if echo "$added" | grep -q "services/"; then msg+="Services, "
+  fi
+
   if [[ -z "$msg" ]]; then
-    # Use modified files for hint
     if echo "$modified" | grep -q "sitemap"; then msg+="SEO sitemap, "
     elif echo "$modified" | grep -q -E "Navbar|Header|Footer"; then msg+="Navigation, "
     elif echo "$modified" | grep -q -E "sections/Testimonial"; then msg+="Testimonials, "
     elif echo "$modified" | grep -q "page\.tsx"; then msg+="Pages, "
     elif echo "$modified" | grep -q "layout\.tsx"; then msg+="Layout, "
     elif echo "$modified" | grep -q -E "\.css$|globals"; then msg+="Styles, "
+    elif echo "$modified" | grep -q -E "theme|dark|light"; then msg+="Theme, "
+    elif echo "$modified" | grep -q -E "metadata|sitemap|robots|seo|canonical"; then msg+="SEO, "
     elif echo "$deleted" | grep -q "."; then msg+="Cleanup, "
     else msg+="Updates, "
     fi
   fi
 
-  if echo "$added" | grep -q -E "scripts/|\.sh$"; then msg+="Scripts, "
-  fi
-  if echo "$added" | grep -q -E "\.vercelignore|vercel\.json"; then msg+="Vercel config, "
-  fi
-
-  # Theme detection
-  if echo "$modified" | grep -q -E "theme|dark|light"; then msg+="Theme, "
-  fi
-
-  # SEO detection
-  if echo "$modified" | grep -q -E "metadata|sitemap|robots|seo|canonical"; then msg+="SEO, "
-  fi
-
-  # Services detection
-  if echo "$added" | grep -q "services/"; then msg+="Services, "
-  fi
-
-  # Remove trailing comma/space
   msg="${msg%, }"
 
   if [[ -z "$msg" ]]; then
@@ -123,11 +113,6 @@ generate_commit_message() {
 
 COMMIT_MSG=$(generate_commit_message)
 log "Generated commit message: ${COMMIT_MSG}"
-
-# ─── Stage all changes ──────────────────────────────────────────────────────
-log "Staging all changes..."
-git add -A
-ok "All changes staged"
 
 # ─── Run quality checks ─────────────────────────────────────────────────────
 log "Running quality checks..."
