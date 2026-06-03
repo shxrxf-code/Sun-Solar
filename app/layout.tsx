@@ -98,6 +98,11 @@ const WhatsAppButton = dynamic(
   { ssr: false }
 )
 
+const ClickToCall = dynamic(
+  () => import('@/components/ClickToCall'),
+  { ssr: false }
+)
+
 const LeadPopup = dynamic(
   () => import('@/components/LeadPopup'),
   { ssr: false }
@@ -112,15 +117,34 @@ const organizationSchema = {
   logo: `${BASE_URL}/sunsolar-logo.png`,
   description: 'Premium solar installation services in Ramanathapuram, Tamil Nadu. 15+ years experience and 1000+ installations.',
   foundingDate: '2009',
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+917708001737',
-    contactType: 'customer service',
-    email: 'sunsolarpowersystems@gmail.com',
-    availableLanguage: ['English', 'Hindi', 'Tamil'],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Main Road, Near Bus Stand',
+    addressLocality: 'Ramanathapuram',
+    addressRegion: 'Tamil Nadu',
+    postalCode: '623501',
+    addressCountry: 'IN',
   },
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      telephone: '+917708001737',
+      contactType: 'customer service',
+      email: 'sunsolarpowersystems@gmail.com',
+      availableLanguage: ['English', 'Hindi', 'Tamil'],
+    },
+    {
+      '@type': 'ContactPoint',
+      telephone: '+919489231133',
+      contactType: 'sales',
+      email: 'sunsolarpowersystems@gmail.com',
+      availableLanguage: ['English', 'Hindi', 'Tamil'],
+    },
+  ],
   sameAs: [
     'https://wa.me/919489231133',
+    'https://maps.google.com/?q=Sun+Solar+Power+Systems+Ramanathapuram+Tamil+Nadu',
+    'https://www.google.com/search?q=Sun+Solar+Power+Systems+Ramanathapuram',
   ],
 }
 
@@ -224,6 +248,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <Footer />
         <WhatsAppButton />
+        <ClickToCall />
         <LeadPopup />
       </body>
     </html>

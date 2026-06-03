@@ -1,10 +1,14 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/sitemap.xml/route": "app/sitemap.xml/route.js",
   "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/services/off-grid-solar/page": "app/services/off-grid-solar/page.js",
   "/projects/page": "app/projects/page.js",
   "/page": "app/page.js",
-  "/contact/page": "app/contact/page.js",
   "/services/page": "app/services/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/services/on-grid-solar/page": "app/services/on-grid-solar/page.js",
+  "/services/solar-panel-installation/page": "app/services/solar-panel-installation/page.js",
+  "/services/solar-water-heater/page": "app/services/solar-water-heater/page.js",
   "/products/page": "app/products/page.js"
 }
