@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "commit:auto": "bash scripts/auto-commit.sh",
+    "deploy:auto": "npm run lint && npm run build && npm run commit:auto"
   },
   "dependencies": {
     "clsx": "^2.1.0",
