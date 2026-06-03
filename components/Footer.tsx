@@ -51,6 +51,7 @@ const Footer = React.memo(function Footer() {
               <li><Link href="/services/off-grid-solar" className="hover:text-primary-400 transition flex items-center gap-1"><ChevronRight className="w-3 h-3" /> Off Grid Solar</Link></li>
               <li><Link href="/services/solar-water-heater" className="hover:text-primary-400 transition flex items-center gap-1"><ChevronRight className="w-3 h-3" /> Solar Water Heater</Link></li>
               <li><Link href="/services/solar-water-pump" className="hover:text-primary-400 transition flex items-center gap-1"><ChevronRight className="w-3 h-3" /> Solar Water Pump</Link></li>
+              <li><Link href="/services/solar-street-light" className="hover:text-primary-400 transition flex items-center gap-1"><ChevronRight className="w-3 h-3" /> Solar Street Light</Link></li>
             </ul>
           </div>
 

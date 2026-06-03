@@ -9,7 +9,7 @@ const serviceRoutes = [
   '/services/off-grid-solar',
   '/services/solar-water-heater',
   '/services/solar-water-pump',
-  '/services/solar-street-lights',
+  '/services/solar-street-light',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

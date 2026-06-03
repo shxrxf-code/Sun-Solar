@@ -2,99 +2,116 @@
   "pages": {
     "/_not-found/page": [
       "static/chunks/webpack-48cce0e4227dc160.js",
-      "static/chunks/fd9d1056-1f1f859026f5f0fa.js",
-      "static/chunks/117-101b1a729b1c85ce.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
       "static/chunks/main-app-47bd4fffcca21254.js",
-      "static/chunks/app/_not-found/page-377c17aebb42e210.js"
+      "static/chunks/app/_not-found/page-221ef7203edcd7a2.js"
     ],
     "/layout": [
       "static/chunks/webpack-48cce0e4227dc160.js",
-      "static/chunks/fd9d1056-1f1f859026f5f0fa.js",
-      "static/chunks/117-101b1a729b1c85ce.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
       "static/chunks/main-app-47bd4fffcca21254.js",
-      "static/css/fe7ffac3ffd5352e.css",
-      "static/chunks/609-f90960194f68d878.js",
-      "static/chunks/964-65968bfbbfb972ab.js",
-      "static/chunks/app/layout-5841867fa6e4d302.js"
-    ],
-    "/services/off-grid-solar/page": [
-      "static/chunks/webpack-48cce0e4227dc160.js",
-      "static/chunks/fd9d1056-1f1f859026f5f0fa.js",
-      "static/chunks/117-101b1a729b1c85ce.js",
-      "static/chunks/main-app-47bd4fffcca21254.js",
-      "static/chunks/609-f90960194f68d878.js",
-      "static/chunks/app/services/off-grid-solar/page-55a92a386df7eab8.js"
-    ],
-    "/projects/page": [
-      "static/chunks/webpack-48cce0e4227dc160.js",
-      "static/chunks/fd9d1056-1f1f859026f5f0fa.js",
-      "static/chunks/117-101b1a729b1c85ce.js",
-      "static/chunks/main-app-47bd4fffcca21254.js",
-      "static/chunks/609-f90960194f68d878.js",
-      "static/chunks/app/projects/page-90607864f4f05f0d.js"
+      "static/css/b7a1188128782e8b.css",
+      "static/chunks/609-3eabf59c2c4b13a4.js",
+      "static/chunks/851-fe5102a172fc19f2.js",
+      "static/chunks/363-0ab9ff490d8ab538.js",
+      "static/chunks/app/layout-8a9dcc5f7511015c.js"
     ],
     "/page": [
       "static/chunks/webpack-48cce0e4227dc160.js",
-      "static/chunks/fd9d1056-1f1f859026f5f0fa.js",
-      "static/chunks/117-101b1a729b1c85ce.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
       "static/chunks/main-app-47bd4fffcca21254.js",
-      "static/chunks/609-f90960194f68d878.js",
-      "static/chunks/59-d8787127a389491f.js",
-      "static/chunks/app/page-59ad13c935321775.js"
+      "static/chunks/609-3eabf59c2c4b13a4.js",
+      "static/chunks/851-fe5102a172fc19f2.js",
+      "static/chunks/app/page-5d4b171869ad35bb.js"
     ],
-    "/services/page": [
+    "/projects/page": [
       "static/chunks/webpack-48cce0e4227dc160.js",
-      "static/chunks/fd9d1056-1f1f859026f5f0fa.js",
-      "static/chunks/117-101b1a729b1c85ce.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
       "static/chunks/main-app-47bd4fffcca21254.js",
-      "static/chunks/609-f90960194f68d878.js",
-      "static/chunks/app/services/page-067f8ced94416f3b.js"
+      "static/chunks/609-3eabf59c2c4b13a4.js",
+      "static/chunks/app/projects/page-bed33a6b627672a4.js"
     ],
-    "/contact/page": [
+    "/services/off-grid-solar/page": [
       "static/chunks/webpack-48cce0e4227dc160.js",
-      "static/chunks/fd9d1056-1f1f859026f5f0fa.js",
-      "static/chunks/117-101b1a729b1c85ce.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
       "static/chunks/main-app-47bd4fffcca21254.js",
-      "static/chunks/app/contact/page-6ce7cf1bb6858b8b.js"
+      "static/chunks/609-3eabf59c2c4b13a4.js",
+      "static/chunks/app/services/off-grid-solar/page-9b399c6d7968165a.js"
     ],
     "/services/on-grid-solar/page": [
       "static/chunks/webpack-48cce0e4227dc160.js",
-      "static/chunks/fd9d1056-1f1f859026f5f0fa.js",
-      "static/chunks/117-101b1a729b1c85ce.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
       "static/chunks/main-app-47bd4fffcca21254.js",
-      "static/chunks/609-f90960194f68d878.js",
-      "static/chunks/app/services/on-grid-solar/page-01337a9a6183ecf8.js"
+      "static/chunks/609-3eabf59c2c4b13a4.js",
+      "static/chunks/app/services/on-grid-solar/page-f6dd12ea9291d68e.js"
+    ],
+    "/services/page": [
+      "static/chunks/webpack-48cce0e4227dc160.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
+      "static/chunks/main-app-47bd4fffcca21254.js",
+      "static/chunks/609-3eabf59c2c4b13a4.js",
+      "static/chunks/app/services/page-6103a5b48fa6ef05.js"
+    ],
+    "/services/solar-street-light/page": [
+      "static/chunks/webpack-48cce0e4227dc160.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
+      "static/chunks/main-app-47bd4fffcca21254.js",
+      "static/chunks/609-3eabf59c2c4b13a4.js",
+      "static/chunks/app/services/solar-street-light/page-c5ea49044950e4b6.js"
     ],
     "/services/solar-panel-installation/page": [
       "static/chunks/webpack-48cce0e4227dc160.js",
-      "static/chunks/fd9d1056-1f1f859026f5f0fa.js",
-      "static/chunks/117-101b1a729b1c85ce.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
       "static/chunks/main-app-47bd4fffcca21254.js",
-      "static/chunks/609-f90960194f68d878.js",
-      "static/chunks/app/services/solar-panel-installation/page-73799f35e30b5817.js"
+      "static/chunks/609-3eabf59c2c4b13a4.js",
+      "static/chunks/app/services/solar-panel-installation/page-c5683e346a732413.js"
+    ],
+    "/services/solar-water-pump/page": [
+      "static/chunks/webpack-48cce0e4227dc160.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
+      "static/chunks/main-app-47bd4fffcca21254.js",
+      "static/chunks/609-3eabf59c2c4b13a4.js",
+      "static/chunks/app/services/solar-water-pump/page-346386f58feaa371.js"
     ],
     "/services/solar-water-heater/page": [
       "static/chunks/webpack-48cce0e4227dc160.js",
-      "static/chunks/fd9d1056-1f1f859026f5f0fa.js",
-      "static/chunks/117-101b1a729b1c85ce.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
       "static/chunks/main-app-47bd4fffcca21254.js",
-      "static/chunks/609-f90960194f68d878.js",
-      "static/chunks/app/services/solar-water-heater/page-caee9c92e20e6a19.js"
+      "static/chunks/609-3eabf59c2c4b13a4.js",
+      "static/chunks/app/services/solar-water-heater/page-03f5d80b115b44aa.js"
+    ],
+    "/contact/page": [
+      "static/chunks/webpack-48cce0e4227dc160.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
+      "static/chunks/main-app-47bd4fffcca21254.js",
+      "static/chunks/app/contact/page-6ce7cf1bb6858b8b.js"
     ],
     "/products/page": [
       "static/chunks/webpack-48cce0e4227dc160.js",
-      "static/chunks/fd9d1056-1f1f859026f5f0fa.js",
-      "static/chunks/117-101b1a729b1c85ce.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
       "static/chunks/main-app-47bd4fffcca21254.js",
-      "static/chunks/609-f90960194f68d878.js",
-      "static/chunks/59-d8787127a389491f.js",
-      "static/chunks/964-65968bfbbfb972ab.js",
-      "static/chunks/app/products/page-209a2f9ec68a018c.js"
+      "static/chunks/609-3eabf59c2c4b13a4.js",
+      "static/chunks/851-fe5102a172fc19f2.js",
+      "static/chunks/363-0ab9ff490d8ab538.js",
+      "static/chunks/app/products/page-e045e6d755a65cf6.js"
     ],
     "/products/layout": [
       "static/chunks/webpack-48cce0e4227dc160.js",
-      "static/chunks/fd9d1056-1f1f859026f5f0fa.js",
-      "static/chunks/117-101b1a729b1c85ce.js",
+      "static/chunks/fd9d1056-b11b2651f33aae7f.js",
+      "static/chunks/117-4f5b424f20efdcae.js",
       "static/chunks/main-app-47bd4fffcca21254.js",
       "static/chunks/app/products/layout-8aecbf53d70ada7b.js"
     ]
