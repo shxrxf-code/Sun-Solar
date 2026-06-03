@@ -8,6 +8,7 @@ import WhyChooseUs from '@/sections/WhyChooseUs'
 import FAQ from '@/sections/FAQ'
 import Testimonials from '@/sections/Testimonials'
 import Brands from '@/sections/Brands'
+import LocationSection from '@/components/LocationSection'
 
 const BASE_URL = 'https://www.sunsolarpowersystems.com'
 
@@ -85,6 +86,7 @@ export default function Home() {
       <FAQ />
       <Testimonials />
       <Brands />
+      <LocationSection />
     </div>
   )
 }

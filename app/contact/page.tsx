@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Phone, MessageCircle, Mail, MapPin, Clock, ShieldCheck, Star } from 'lucide-react'
+import LocationSection from '@/components/LocationSection'
 
 const BASE_URL = 'https://www.sunsolarpowersystems.com'
 
@@ -65,6 +66,7 @@ const breadcrumbSchema = {
 
 export default function ContactPage() {
   return (
+    <>
     <section className="bg-[#f9fafb] min-h-screen px-6 py-16 pt-32">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -203,5 +205,7 @@ export default function ContactPage() {
         </div>
       </div>
     </section>
+    <LocationSection />
+    </>
   )
 }
