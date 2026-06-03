@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Phone, MessageCircle, Mail, MapPin, Clock } from 'lucide-react'
-import LocationSection from '@/components/LocationSection'
 
 const BASE_URL = 'https://www.sunsolarpowersystems.com'
 
@@ -186,7 +185,6 @@ export default function ContactPage() {
         </div>
       </div>
     </section>
-    <LocationSection />
     </>
   )
 }

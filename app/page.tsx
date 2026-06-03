@@ -85,8 +85,8 @@ export default function Home() {
       <WhyChooseUs />
       <FAQ />
       <Testimonials />
-      <Brands />
       <LocationSection />
+      <Brands />
     </div>
   )
 }
