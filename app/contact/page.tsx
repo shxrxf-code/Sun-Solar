@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Phone, MessageCircle, Mail } from 'lucide-react'
 
-const BASE_URL = 'https://www.sunsolar.com'
+const BASE_URL = 'https://www.sunsolarpowersystems.com'
 
 export const metadata: Metadata = {
   title: 'Contact Us - Free Solar Consultation',

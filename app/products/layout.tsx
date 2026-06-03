@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-const BASE_URL = 'https://www.sunsolar.com'
+const BASE_URL = 'https://www.sunsolarpowersystems.com'
 
 export const metadata: Metadata = {
   title: 'Solar Products',

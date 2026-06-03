@@ -228,7 +228,7 @@ This project is proprietary software. All rights reserved.
 ## 👥 Support
 
 For support and inquiries:
-- Email: info@sunsolar.com
+- Email: info@sunsolarpowersystems.com
 - Phone: +91 98765 43210
 - WhatsApp: +91 98765 43210
 

@@ -24,19 +24,22 @@ const poppins = Poppins({
   fallback: ['system-ui', 'sans-serif'],
 })
 
-const BASE_URL = 'https://www.sunsolar.com'
+const BASE_URL = 'https://www.sunsolarpowersystems.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Sun Solar Power Systems | Cut Electricity Bills by 95%',
-    template: '%s | Sun Solar Power Systems',
+    default: 'Sun Solar Power Systems | Solar Company in Ramanathapuram',
+    template: '%s | Sun Solar Power Systems - Ramanathapuram',
   },
-  description: 'Premium solar installation services with 15+ years experience. 1000+ installations across India. Get free consultation and calculate your solar savings today.',
+  description: 'Sun Solar Power Systems is the leading solar company in Ramanathapuram. Specializing in solar panel installation, on-grid & off-grid solar systems, solar water heaters, and solar water pumps. 15+ years experience, 1000+ installations, government subsidy support.',
   keywords: [
+    'solar company in Ramanathapuram', 'solar panel installation Ramanathapuram',
+    'solar water heater Ramanathapuram', 'solar water pump Ramanathapuram',
+    'on grid solar system Ramanathapuram', 'off grid solar system Ramanathapuram',
     'solar panels', 'solar installation', 'solar energy', 'rooftop solar',
-    'solar subsidy India', 'solar power system', 'solar company',
-    'solar panel installation', 'renewable energy', 'solar water heater',
+    'solar subsidy India', 'solar power system',
+    'solar street lights Ramanathapuram', 'renewable energy',
     'solar inverter', 'solar battery',
   ],
   authors: [{ name: 'Sun Solar Power Systems' }],
@@ -46,8 +49,8 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
   },
   openGraph: {
-    title: 'Sun Solar Power Systems | Cut Electricity Bills by 95%',
-    description: 'Premium solar installation services. 15+ years experience, 1000+ installations across India.',
+    title: 'Sun Solar Power Systems | Solar Company in Ramanathapuram',
+    description: 'Leading solar company in Ramanathapuram. Solar panel installation, on-grid/off-grid systems, solar water heaters, pumps. 1000+ installations, government subsidy, 25-year warranty.',
     url: BASE_URL,
     siteName: 'Sun Solar Power Systems',
     type: 'website',
@@ -57,14 +60,14 @@ export const metadata: Metadata = {
         url: '/sunsolar-logo.png',
         width: 512,
         height: 512,
-        alt: 'Sun Solar Power Systems',
+        alt: 'Sun Solar Power Systems - Solar Company in Ramanathapuram',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sun Solar Power Systems | Cut Electricity Bills by 95%',
-    description: 'Premium solar installation services. 15+ years experience, 1000+ installations across India.',
+    title: 'Sun Solar Power Systems | Solar Company in Ramanathapuram',
+    description: 'Leading solar company in Ramanathapuram. Solar panel installation, on-grid/off-grid systems, solar water heaters, pumps.',
     images: ['/sunsolar-logo.png'],
   },
   robots: {
@@ -82,6 +85,12 @@ export const metadata: Metadata = {
     google: 'YOUR_GOOGLE_VERIFICATION_TOKEN',
   },
   category: 'energy',
+  other: {
+    'geo.region': 'IN-TN',
+    'geo.placename': 'Ramanathapuram',
+    'geo.position': '9.3715;78.8344',
+    'ICBM': '9.3715, 78.8344',
+  },
 }
 
 const WhatsAppButton = dynamic(
@@ -101,14 +110,14 @@ const organizationSchema = {
   name: 'Sun Solar Power Systems',
   url: BASE_URL,
   logo: `${BASE_URL}/sunsolar-logo.png`,
-  description: 'Premium solar installation services with 15+ years experience and 1000+ installations across India.',
+  description: 'Premium solar installation services in Ramanathapuram, Tamil Nadu. 15+ years experience and 1000+ installations.',
   foundingDate: '2009',
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+917708001737',
     contactType: 'customer service',
     email: 'sunsolarpowersystems@gmail.com',
-    availableLanguage: ['English', 'Hindi'],
+    availableLanguage: ['English', 'Hindi', 'Tamil'],
   },
   sameAs: [
     'https://wa.me/919489231133',
@@ -120,7 +129,7 @@ const localBusinessSchema = {
   '@type': 'LocalBusiness',
   '@id': `${BASE_URL}/#localbusiness`,
   name: 'Sun Solar Power Systems',
-  description: 'Premium solar installation services with 15+ years experience and 1000+ installations across India.',
+  description: 'Leading solar company in Ramanathapuram offering solar panel installation, on-grid and off-grid solar systems, solar water heaters, solar water pumps, and solar street lights.',
   url: BASE_URL,
   telephone: '+917708001737',
   email: 'sunsolarpowersystems@gmail.com',
@@ -128,16 +137,16 @@ const localBusinessSchema = {
   priceRange: '₹₹₹',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '123 Solar Street',
-    addressLocality: 'Green Energy Park',
-    addressRegion: 'New Delhi',
-    postalCode: '110001',
+    streetAddress: 'Main Road, Near Bus Stand',
+    addressLocality: 'Ramanathapuram',
+    addressRegion: 'Tamil Nadu',
+    postalCode: '623501',
     addressCountry: 'IN',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: '28.588550',
-    longitude: '77.208987',
+    latitude: '9.3715',
+    longitude: '78.8344',
   },
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
@@ -146,8 +155,13 @@ const localBusinessSchema = {
     closes: '19:00',
   },
   areaServed: [
-    { '@type': 'City', name: 'New Delhi' },
-    { '@type': 'State', name: 'Delhi NCR' },
+    { '@type': 'City', name: 'Ramanathapuram' },
+    { '@type': 'City', name: 'Rameswaram' },
+    { '@type': 'City', name: 'Paramakudi' },
+    { '@type': 'City', name: 'Keelakarai' },
+    { '@type': 'City', name: 'Mudukulathur' },
+    { '@type': 'City', name: 'Erwadi' },
+    { '@type': 'State', name: 'Tamil Nadu' },
     { '@type': 'Country', name: 'India' },
   ],
   parentOrganization: { '@id': `${BASE_URL}/#organization` },
@@ -159,7 +173,7 @@ const websiteSchema = {
   '@id': `${BASE_URL}/#website`,
   name: 'Sun Solar Power Systems',
   url: BASE_URL,
-  description: 'Premium solar installation services with 15+ years experience.',
+  description: 'Solar company in Ramanathapuram - Solar panel installation, on-grid & off-grid systems, solar water heaters, pumps.',
   publisher: { '@id': `${BASE_URL}/#organization` },
   inLanguage: 'en-IN',
   potentialAction: {

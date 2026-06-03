@@ -9,7 +9,7 @@ import FAQ from '@/sections/FAQ'
 import Testimonials from '@/sections/Testimonials'
 import Brands from '@/sections/Brands'
 
-const BASE_URL = 'https://www.sunsolar.com'
+const BASE_URL = 'https://www.sunsolarpowersystems.com'
 
 export const metadata: Metadata = {
   title: 'Sun Solar Power Systems | Cut Electricity Bills by 95%',

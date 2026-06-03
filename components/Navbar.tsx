@@ -10,8 +10,9 @@ import Image from 'next/image'
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Services', href: '/services' },
-  { name: 'Category', href: '/products' },
+  { name: 'Products', href: '/products' },
   { name: 'Projects', href: '/projects' },
+  { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
 ] as const
 
@@ -54,7 +55,7 @@ const Navbar = () => {
               priority
             />
             <div>
-              <h1 className="font-poppins text-xl font-bold text-dark-900">Sun Solar</h1>
+              <span className="font-poppins text-xl font-bold text-dark-900">Sun Solar</span>
               <p className="text-xs text-dark-600 font-semibold">Power Systems</p>
             </div>
           </Link>

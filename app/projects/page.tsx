@@ -3,7 +3,7 @@ import { ArrowRight, TrendingUp, Calendar, Zap, ShieldCheck, Leaf, MapPin, Star,
 import Link from 'next/link'
 import Image from 'next/image'
 
-const BASE_URL = 'https://www.sunsolar.com'
+const BASE_URL = 'https://www.sunsolarpowersystems.com'
 
 export const metadata: Metadata = {
   title: 'Solar Projects & Case Studies',
