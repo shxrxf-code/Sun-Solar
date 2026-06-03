@@ -1,9 +1,0 @@
-User-Agent: *
-Allow: /
-Disallow: /api/
-Disallow: /_next/
-
-User-Agent: GPTBot
-Disallow: /
-
-Sitemap: https://www.sunsolarpowersystems.com/sitemap.xml
