@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ChevronLeft, Search, MapPin, Grid3X3, Filter, ArrowRight } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, Search, Grid3X3, Filter, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/ui/Button'
@@ -13,8 +13,6 @@ interface Project {
   id: string
   title: string
   category: Category
-  location: string
-  description: string
   image: string
 }
 
@@ -29,30 +27,30 @@ const categories: { key: Category; label: string }[] = [
 ]
 
 const projects: Project[] = [
-  { id: 'sp1', title: 'Residential Rooftop Solar Installation', category: 'solar-panel', location: 'Ramanathapuram', description: '5kW rooftop solar panel installation for a residential home with net metering connection.', image: '/images/works/sp1.webp' },
-  { id: 'sp2', title: 'Rooftop Solar Array - Premium Home', category: 'solar-panel', location: 'Ramanathapuram', description: 'Complete rooftop solar array installation with monitoring system for a premium residence.', image: '/images/works/sp2.webp' },
-  { id: 'sp3', title: 'Commercial Solar Panel System', category: 'solar-panel', location: 'Ramanathapuram', description: '10kW commercial solar panel installation for a local business with maximum energy savings.', image: '/images/works/sp3.webp' },
-  { id: 'sp4', title: 'Industrial Solar Power Setup', category: 'solar-panel', location: 'Ramanathapuram', description: 'Large-scale industrial solar power system installation with high-efficiency panels.', image: '/images/works/sp4.webp' },
-  { id: 'sp6', title: 'Multi-Unit Residential Solar', category: 'solar-panel', location: 'Ramanathapuram', description: 'Solar panel installation for a multi-unit residential apartment complex.', image: '/images/works/sp6.webp' },
-  { id: 'sp7', title: 'Large Scale Solar Installation', category: 'solar-panel', location: 'Ramanathapuram', description: 'Large-scale solar panel project covering extensive rooftop area for maximum power generation.', image: '/images/works/sp7.webp' },
-  { id: 'solar-home', title: 'Home Solar Panel System', category: 'solar-panel', location: 'Ramanathapuram', description: 'Complete home solar solution with battery backup and smart energy management.', image: '/images/works/solar-home.webp' },
-  { id: 'wh1', title: 'Residential Solar Water Heater', category: 'water-heater', location: 'Ramanathapuram', description: '200LPD solar water heater installation for a family home with ETC tubes.', image: '/images/works/wh1.webp' },
-  { id: 'wh2', title: 'Home Solar Water Heating System', category: 'water-heater', location: 'Ramanathapuram', description: 'Compact solar water heater system for residential use with zero running cost.', image: '/images/works/wh2.webp' },
-  { id: 'wh3', title: 'Commercial Solar Water Heater', category: 'water-heater', location: 'Ramanathapuram', description: 'Large capacity solar water heating system for a commercial establishment.', image: '/images/works/wh3.webp' },
-  { id: 'wh4', title: 'High-Capacity Solar Water Heater', category: 'water-heater', location: 'Ramanathapuram', description: '500LPD solar water heater installation for high-demand hot water requirements.', image: '/images/works/wh4.webp' },
-  { id: 'wp1', title: 'Agricultural Solar Water Pump', category: 'water-pump', location: 'Ramanathapuram', description: 'Solar-powered irrigation pump for agricultural farm with subsidy benefits.', image: '/images/works/wp1.webp' },
-  { id: 'wp2', title: 'Farm Solar Pump Installation', category: 'water-pump', location: 'Ramanathapuram', description: 'Submersible solar water pump for farmland irrigation with drip system.', image: '/images/works/wp2.webp' },
-  { id: 'wp3', title: 'Borewell Solar Pump System', category: 'water-pump', location: 'Ramanathapuram', description: 'Solar borewell pump installation for agricultural water supply in remote areas.', image: '/images/works/wp3.webp' },
-  { id: 'wp4', title: 'Agricultural Field Solar Pump', category: 'water-pump', location: 'Ramanathapuram', description: 'Complete solar water pumping solution for large agricultural fields.', image: '/images/works/wp4.webp' },
-  { id: 'og1', title: '5kW On-Grid Solar System', category: 'on-grid', location: 'Ramanathapuram', description: 'Grid-tied 5kW solar power system with net metering for residential home.', image: '/images/works/og_service.webp' },
-  { id: 'og2', title: 'On-Grid Solar Power Plant', category: 'on-grid', location: 'Ramanathapuram', description: 'Grid-connected solar power plant with bidirectional meter and export facility.', image: '/images/works/of_alt.webp' },
-  { id: 'of1', title: 'Off-Grid Solar System with Battery', category: 'off-grid', location: 'Ramanathapuram', description: 'Complete off-grid solar system with battery storage for 24/7 power backup.', image: '/images/works/solar-home.webp' },
-  { id: 'of2', title: 'Off-Grid Solar for Rural Home', category: 'off-grid', location: 'Ramanathapuram', description: 'Independent off-grid solar solution for rural home with no grid access.', image: '/images/works/of_alt.webp' },
-  { id: 'sl1', title: 'Solar Street Light - Road Installation', category: 'street-light', location: 'Ramanathapuram', description: '20W automatic solar street light with dusk-to-dawn sensor for road lighting.', image: '/images/works/sl1.webp' },
-  { id: 'sl2', title: 'Solar Street Light - Public Area', category: 'street-light', location: 'Ramanathapuram', description: 'Solar-powered LED street light with motion sensor for public spaces.', image: '/images/works/sl2.webp' },
-  { id: 'sl3', title: 'Solar Compound Light Installation', category: 'street-light', location: 'Ramanathapuram', description: 'Solar lighting solution for residential compound with night-time illumination.', image: '/images/works/sl3.webp' },
-  { id: 'sl4', title: 'Commercial Solar Street Lighting', category: 'street-light', location: 'Ramanathapuram', description: 'Complete solar street lighting system for commercial area with zero electricity cost.', image: '/images/works/sl4.webp' },
-  { id: 'sl5', title: 'Solar LED Street Light System', category: 'street-light', location: 'Ramanathapuram', description: 'High-lumen solar LED street light installation for community roads.', image: '/images/works/sl_alt.webp' },
+  { id: 'sp1', title: 'Residential Rooftop Solar Installation', category: 'solar-panel', image: '/images/works/sp1.webp' },
+  { id: 'sp2', title: 'Rooftop Solar Array - Premium Home', category: 'solar-panel', image: '/images/works/sp2.webp' },
+  { id: 'sp3', title: 'Commercial Solar Panel System', category: 'solar-panel', image: '/images/works/sp3.webp' },
+  { id: 'sp4', title: 'Industrial Solar Power Setup', category: 'solar-panel', image: '/images/works/sp4.webp' },
+  { id: 'sp6', title: 'Multi-Unit Residential Solar', category: 'solar-panel', image: '/images/works/sp6.webp' },
+  { id: 'sp7', title: 'Large Scale Solar Installation', category: 'solar-panel', image: '/images/works/sp7.webp' },
+  { id: 'solar-home', title: 'Home Solar Panel System', category: 'solar-panel', image: '/images/works/solar-home.webp' },
+  { id: 'wh1', title: 'Residential Solar Water Heater', category: 'water-heater', image: '/images/works/wh1.webp' },
+  { id: 'wh2', title: 'Home Solar Water Heating System', category: 'water-heater', image: '/images/works/wh2.webp' },
+  { id: 'wh3', title: 'Commercial Solar Water Heater', category: 'water-heater', image: '/images/works/wh3.webp' },
+  { id: 'wh4', title: 'High-Capacity Solar Water Heater', category: 'water-heater', image: '/images/works/wh4.webp' },
+  { id: 'wp1', title: 'Agricultural Solar Water Pump', category: 'water-pump', image: '/images/works/wp1.webp' },
+  { id: 'wp2', title: 'Farm Solar Pump Installation', category: 'water-pump', image: '/images/works/wp2.webp' },
+  { id: 'wp3', title: 'Borewell Solar Pump System', category: 'water-pump', image: '/images/works/wp3.webp' },
+  { id: 'wp4', title: 'Agricultural Field Solar Pump', category: 'water-pump', image: '/images/works/wp4.webp' },
+  { id: 'og1', title: '5kW On-Grid Solar System', category: 'on-grid', image: '/images/works/og_service.webp' },
+  { id: 'og2', title: 'On-Grid Solar Power Plant', category: 'on-grid', image: '/images/works/of_alt.webp' },
+  { id: 'of1', title: 'Off-Grid Solar System with Battery', category: 'off-grid', image: '/images/works/solar-home.webp' },
+  { id: 'of2', title: 'Off-Grid Solar for Rural Home', category: 'off-grid', image: '/images/works/of_alt.webp' },
+  { id: 'sl1', title: 'Solar Street Light - Road Installation', category: 'street-light', image: '/images/works/sl1.webp' },
+  { id: 'sl2', title: 'Solar Street Light - Public Area', category: 'street-light', image: '/images/works/sl2.webp' },
+  { id: 'sl3', title: 'Solar Compound Light Installation', category: 'street-light', image: '/images/works/sl3.webp' },
+  { id: 'sl4', title: 'Commercial Solar Street Lighting', category: 'street-light', image: '/images/works/sl4.webp' },
+  { id: 'sl5', title: 'Solar LED Street Light System', category: 'street-light', image: '/images/works/sl_alt.webp' },
 ]
 
 const stats = [
@@ -201,7 +199,7 @@ export default function OurWorksPage() {
           </div>
         </div>
 
-        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div layout className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, index) => {
               const actualIndex = projects.indexOf(project)
@@ -209,45 +207,38 @@ export default function OurWorksPage() {
                 <motion.div
                   key={project.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="group bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden hover:shadow-lg hover:border-primary-200 transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                  className="break-inside-avoid group cursor-pointer"
+                  onClick={() => openLightbox(actualIndex)}
                 >
-                  <div className="relative h-48 sm:h-52 overflow-hidden bg-gray-100">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      loading="lazy"
-                    />
-                    <div className="absolute top-3 left-3">
+                  <div className="relative overflow-hidden rounded-2xl bg-gray-100 shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div className="relative w-full" style={{ minHeight: '280px' }}>
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    <div className="absolute top-3 left-3 z-10">
                       <span className="px-2.5 py-1 bg-white/90 backdrop-blur-sm text-dark-800 text-xs font-medium rounded-lg shadow-sm">
                         {categories.find((c) => c.key === project.category)?.label || project.category}
                       </span>
                     </div>
-                  </div>
-                  <div className="p-4 sm:p-5">
-                    <div className="flex items-center gap-1.5 text-dark-500 text-xs mb-2">
-                      <MapPin className="w-3.5 h-3.5" />
-                      {project.location}
+
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                      <h3 className="text-white font-poppins text-sm sm:text-base font-semibold leading-snug drop-shadow-sm">
+                        {project.title}
+                      </h3>
                     </div>
-                    <h3 className="font-poppins text-base font-semibold text-dark-900 leading-snug mb-2 group-hover:text-primary-600 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-dark-600 leading-relaxed line-clamp-2">
-                      {project.description}
-                    </p>
-                    <button
-                      onClick={() => openLightbox(actualIndex)}
-                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors group/btn"
-                    >
-                      View Image
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </button>
                   </div>
                 </motion.div>
               )
@@ -273,25 +264,30 @@ export default function OurWorksPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4"
             onClick={closeLightbox}
           >
             <div
-              className="relative max-w-5xl w-full max-h-[90vh] flex flex-col"
+              className="relative w-full max-w-6xl max-h-screen flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={closeLightbox}
-                className="absolute -top-12 right-0 text-white/80 hover:text-white transition-colors z-10"
-                aria-label="Close lightbox"
-              >
-                <X className="w-8 h-8" />
-              </button>
+              <div className="flex items-center justify-between mb-3 px-1">
+                <div className="text-white/80 text-sm font-medium">
+                  {lightboxIndex !== null ? `${lightboxIndex + 1} / ${filtered.length}` : ''}
+                </div>
+                <button
+                  onClick={closeLightbox}
+                  className="text-white/70 hover:text-white transition-colors"
+                  aria-label="Close lightbox"
+                >
+                  <X className="w-7 h-7" />
+                </button>
+              </div>
 
               <div className="relative flex-1 flex items-center justify-center">
                 <button
                   onClick={goPrev}
-                  className="absolute left-2 md:-left-14 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                  className="absolute left-2 md:-left-14 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors backdrop-blur-sm"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-6 h-6 text-white" />
@@ -302,36 +298,34 @@ export default function OurWorksPage() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.25 }}
-                  className="relative w-full max-h-[75vh] aspect-video rounded-2xl overflow-hidden"
+                  className="relative w-full max-h-[85vh] flex items-center justify-center"
                 >
                   <Image
                     src={filtered[lightboxIndex]?.image || ''}
                     alt={filtered[lightboxIndex]?.title || ''}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 1024px) 100vw, 80vw"
+                    width={1600}
+                    height={900}
+                    className="w-auto h-auto max-w-full max-h-[85vh] object-contain rounded-lg"
+                    sizes="90vw"
                     priority
                   />
                 </motion.div>
 
                 <button
                   onClick={goNext}
-                  className="absolute right-2 md:-right-14 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                  className="absolute right-2 md:-right-14 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors backdrop-blur-sm"
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-6 h-6 text-white" />
                 </button>
               </div>
 
-              <div className="mt-4 text-center">
-                <p className="text-white font-semibold text-lg">
+              <div className="mt-4 text-center px-1">
+                <p className="text-white font-semibold text-base sm:text-lg">
                   {filtered[lightboxIndex]?.title}
                 </p>
-                <p className="text-gray-400 text-sm mt-1">
-                  {filtered[lightboxIndex]?.description}
-                </p>
-                <p className="text-gray-500 text-xs mt-2">
-                  {lightboxIndex !== null ? `${lightboxIndex + 1} / ${filtered.length}` : ''}
+                <p className="text-primary-400 text-xs sm:text-sm mt-1">
+                  {categories.find((c) => c.key === filtered[lightboxIndex]?.category)?.label}
                 </p>
               </div>
             </div>
@@ -371,13 +365,5 @@ export default function OurWorksPage() {
         </div>
       </div>
     </main>
-  )
-}
-
-function ChevronRight({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-    </svg>
   )
 }

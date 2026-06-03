@@ -9,10 +9,8 @@ import Image from 'next/image'
 
 const navLinks = [
   { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
   { name: 'Products', href: '/products' },
   { name: 'Our Works', href: '/our-works' },
-  { name: 'Location', href: '/contact' },
   { name: 'Contact', href: '/contact' },
 ] as const
 
