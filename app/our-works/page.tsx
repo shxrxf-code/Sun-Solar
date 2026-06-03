@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ChevronLeft, Search, MapPin, Grid3X3, Filter } from 'lucide-react'
+import { X, ChevronLeft, Search, MapPin, Grid3X3, Filter, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
+import Button from '@/ui/Button'
 
 type Category = 'all' | 'solar-panel' | 'water-heater' | 'water-pump' | 'on-grid' | 'off-grid' | 'street-light'
 
@@ -59,20 +61,6 @@ const stats = [
   { value: '100%', label: 'Customer Satisfaction' },
 ]
 
-const fadeUp = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-60px' },
-  transition: { duration: 0.5, ease: 'easeOut' },
-}
-
-const staggerItem = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.4, ease: 'easeOut' },
-}
-
 export default function OurWorksPage() {
   const [activeCategory, setActiveCategory] = useState<Category>('all')
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
@@ -123,169 +111,159 @@ export default function OurWorksPage() {
   }
 
   return (
-    <main className="bg-dark-950 min-h-screen">
-      <section className="relative pt-32 pb-20 md:pb-28 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-900/15 via-dark-950 to-dark-950 pointer-events-none" />
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="text-center"
-          >
-            <span className="inline-block text-primary-400 font-semibold text-sm tracking-[0.2em] uppercase mb-4">Our Portfolio</span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-poppins leading-tight">
-              Real Solar Installations Across <span className="text-primary-400">Ramanathapuram</span>
-            </h1>
-            <p className="text-dark-400 mt-4 max-w-2xl mx-auto text-lg">
-              Explore our completed residential, commercial, agricultural and industrial solar energy projects.
-            </p>
-          </motion.div>
+    <main className="bg-white min-h-screen">
+      <div className="w-full px-6 lg:px-12 xl:px-16 2xl:px-24 pt-24 sm:pt-32 pb-6 sm:pb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+        >
+          <span className="inline-block text-primary-600 font-semibold text-sm tracking-wide uppercase mb-2">Our Portfolio</span>
+          <h1 className="font-poppins text-2xl sm:text-4xl lg:text-5xl font-bold text-dark-900 leading-tight">
+            Real Solar Installations Across <span className="text-primary-600">Ramanathapuram</span>
+          </h1>
+          <p className="text-sm sm:text-lg text-dark-600 mt-2 sm:mt-4 max-w-2xl">
+            Explore our completed residential, commercial, agricultural and industrial solar energy projects.
+          </p>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-3 gap-4 md:gap-8 mt-14 max-w-3xl mx-auto"
-          >
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center p-4 md:p-6 rounded-2xl bg-dark-800/50 border border-dark-700/50 backdrop-blur-sm">
-                <div className="text-2xl md:text-4xl font-bold text-primary-400 font-poppins">{stat.value}</div>
-                <div className="text-xs md:text-sm text-dark-400 mt-1">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      <section ref={gridRef} className="px-6 pb-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-10">
-            <div className="hidden md:flex flex-wrap gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat.key}
-                  onClick={() => handleCategoryChange(cat.key)}
-                  className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
-                    activeCategory === cat.key
-                      ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/20'
-                      : 'bg-dark-800/60 text-dark-300 border border-dark-700/50 hover:bg-dark-700 hover:text-white'
-                  }`}
-                >
-                  {cat.key === 'all' ? <Grid3X3 className="w-4 h-4 inline mr-1.5 -mt-0.5" /> : null}
-                  {cat.label}
-                </button>
-              ))}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="grid grid-cols-3 gap-4 md:gap-6 mt-10 sm:mt-14 max-w-3xl"
+        >
+          {stats.map((stat) => (
+            <div key={stat.label} className="text-center p-4 sm:p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
+              <div className="text-2xl sm:text-4xl font-bold text-primary-600 font-poppins">{stat.value}</div>
+              <div className="text-xs sm:text-sm text-dark-500 mt-1">{stat.label}</div>
             </div>
+          ))}
+        </motion.div>
+      </div>
 
-            <div className="md:hidden relative">
+      <section ref={gridRef} className="w-full px-6 lg:px-12 xl:px-16 2xl:px-24 pb-6 sm:pb-10">
+        <div className="flex items-center justify-between mb-6 sm:mb-10">
+          <div className="hidden md:flex flex-wrap gap-2">
+            {categories.map((cat) => (
               <button
-                onClick={() => setShowMobileFilter(!showMobileFilter)}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-dark-800/60 text-dark-300 border border-dark-700/50 text-sm font-medium"
+                key={cat.key}
+                onClick={() => handleCategoryChange(cat.key)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                  activeCategory === cat.key
+                    ? 'bg-primary-600 text-white shadow-md'
+                    : 'bg-gray-100 text-dark-700 hover:bg-gray-200'
+                }`}
               >
-                <Filter className="w-4 h-4" />
-                {categories.find((c) => c.key === activeCategory)?.label || 'Filter'}
+                {cat.key === 'all' ? <Grid3X3 className="w-4 h-4 inline mr-1.5 -mt-0.5" /> : null}
+                {cat.label}
               </button>
-              <AnimatePresence>
-                {showMobileFilter && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    className="absolute right-0 top-full mt-2 w-52 bg-dark-800 border border-dark-700 rounded-xl shadow-2xl z-20 overflow-hidden"
-                  >
-                    {categories.map((cat) => (
-                      <button
-                        key={cat.key}
-                        onClick={() => handleCategoryChange(cat.key)}
-                        className={`block w-full text-left px-4 py-3 text-sm transition-colors ${
-                          activeCategory === cat.key
-                            ? 'bg-primary-600/20 text-primary-400 font-medium'
-                            : 'text-dark-300 hover:bg-dark-700'
-                        }`}
-                      >
-                        {cat.label}
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <div className="text-sm text-dark-500">
-              <Search className="w-4 h-4 inline mr-1.5 -mt-0.5" />
-              {filtered.length} project{filtered.length !== 1 ? 's' : ''}
-            </div>
+            ))}
           </div>
 
-          <motion.div
-            layout
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            <AnimatePresence mode="popLayout">
-              {filtered.map((project, index) => {
-                const actualIndex = projects.indexOf(project)
-                return (
-                  <motion.div
-                    key={project.id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.3, ease: 'easeOut' }}
-                    className="group relative bg-dark-800/40 border border-dark-700/50 rounded-2xl overflow-hidden hover:border-primary-500/30 hover:shadow-xl hover:shadow-primary-500/5 transition-all duration-300"
-                  >
-                    <div className="relative h-52 md:h-60 overflow-hidden">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent" />
-                      <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-1 bg-primary-600/90 backdrop-blur-sm text-white text-xs font-medium rounded-lg">
-                          {categories.find((c) => c.key === project.category)?.label || project.category}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="p-5">
-                      <div className="flex items-center gap-1.5 text-dark-400 text-xs mb-2">
-                        <MapPin className="w-3.5 h-3.5" />
-                        {project.location}
-                      </div>
-                      <h3 className="text-white font-semibold text-base leading-snug mb-2 group-hover:text-primary-400 transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-dark-400 text-sm leading-relaxed line-clamp-2">
-                        {project.description}
-                      </p>
-                      <button
-                        onClick={() => openLightbox(actualIndex)}
-                        className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary-400 hover:text-primary-300 transition-colors"
-                      >
-                        View Image
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </motion.div>
-                )
-              })}
-            </AnimatePresence>
-          </motion.div>
-
-          {filtered.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-20"
+          <div className="md:hidden relative">
+            <button
+              onClick={() => setShowMobileFilter(!showMobileFilter)}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 text-dark-700 text-sm font-medium hover:bg-gray-200 transition-colors"
             >
-              <div className="text-dark-500 text-lg">No projects found in this category.</div>
-            </motion.div>
-          )}
+              <Filter className="w-4 h-4" />
+              {categories.find((c) => c.key === activeCategory)?.label || 'Filter'}
+            </button>
+            <AnimatePresence>
+              {showMobileFilter && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  className="absolute right-0 top-full mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-xl z-20 overflow-hidden"
+                >
+                  {categories.map((cat) => (
+                    <button
+                      key={cat.key}
+                      onClick={() => handleCategoryChange(cat.key)}
+                      className={`block w-full text-left px-4 py-3 text-sm transition-colors ${
+                        activeCategory === cat.key
+                          ? 'bg-primary-50 text-primary-600 font-medium'
+                          : 'text-dark-700 hover:bg-gray-50'
+                      }`}
+                    >
+                      {cat.label}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          <div className="text-sm text-dark-500">
+            <Search className="w-4 h-4 inline mr-1.5 -mt-0.5" />
+            {filtered.length} project{filtered.length !== 1 ? 's' : ''}
+          </div>
         </div>
+
+        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((project, index) => {
+              const actualIndex = projects.indexOf(project)
+              return (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  className="group bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden hover:shadow-lg hover:border-primary-200 transition-all duration-300"
+                >
+                  <div className="relative h-48 sm:h-52 overflow-hidden bg-gray-100">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-1 bg-white/90 backdrop-blur-sm text-dark-800 text-xs font-medium rounded-lg shadow-sm">
+                        {categories.find((c) => c.key === project.category)?.label || project.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-4 sm:p-5">
+                    <div className="flex items-center gap-1.5 text-dark-500 text-xs mb-2">
+                      <MapPin className="w-3.5 h-3.5" />
+                      {project.location}
+                    </div>
+                    <h3 className="font-poppins text-base font-semibold text-dark-900 leading-snug mb-2 group-hover:text-primary-600 transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-dark-600 leading-relaxed line-clamp-2">
+                      {project.description}
+                    </p>
+                    <button
+                      onClick={() => openLightbox(actualIndex)}
+                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors group/btn"
+                    >
+                      View Image
+                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    </button>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </AnimatePresence>
+        </motion.div>
+
+        {filtered.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-16"
+          >
+            <p className="text-gray-500 text-lg">No projects found in this category.</p>
+          </motion.div>
+        )}
       </section>
 
       <AnimatePresence>
@@ -349,10 +327,10 @@ export default function OurWorksPage() {
                 <p className="text-white font-semibold text-lg">
                   {filtered[lightboxIndex]?.title}
                 </p>
-                <p className="text-dark-400 text-sm mt-1">
+                <p className="text-gray-400 text-sm mt-1">
                   {filtered[lightboxIndex]?.description}
                 </p>
-                <p className="text-dark-500 text-xs mt-2">
+                <p className="text-gray-500 text-xs mt-2">
                   {lightboxIndex !== null ? `${lightboxIndex + 1} / ${filtered.length}` : ''}
                 </p>
               </div>
@@ -361,32 +339,37 @@ export default function OurWorksPage() {
         )}
       </AnimatePresence>
 
-      <motion.section {...fadeUp} className="px-6 pb-24">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="p-10 md:p-14 rounded-3xl bg-gradient-to-br from-primary-600/10 via-dark-800 to-dark-800 border border-primary-500/20">
-            <h2 className="text-2xl md:text-4xl font-bold text-white font-poppins">
+      <div className="bg-primary-50">
+        <div className="w-full px-6 lg:px-12 xl:px-16 2xl:px-24 py-16 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+          >
+            <h2 className="font-poppins text-2xl sm:text-3xl font-semibold text-dark-900">
               Ready to Start Your Solar Project?
             </h2>
-            <p className="text-dark-400 mt-3 max-w-xl mx-auto">
+            <p className="text-sm sm:text-lg text-dark-600 mt-3 max-w-xl mx-auto">
               Get a free consultation and site inspection. Our team will design the perfect solar solution for your property.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mt-8">
-              <a
-                href="/contact"
-                className="px-8 py-3 bg-primary-600 text-white rounded-xl font-semibold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/20"
-              >
-                Get Free Consultation
-              </a>
+              <Link href="/contact">
+                <Button size="lg" className="group">
+                  Get Free Consultation
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
               <a
                 href="tel:+917708001737"
-                className="px-8 py-3 border border-dark-600 text-dark-200 rounded-xl font-semibold hover:bg-dark-700 transition-colors"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white transition-colors duration-200 text-base"
               >
                 Call +91 77080 01737
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </motion.section>
+      </div>
     </main>
   )
 }
