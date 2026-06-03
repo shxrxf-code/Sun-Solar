@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Phone, MessageCircle, Mail, MapPin, Clock, ShieldCheck, Star } from 'lucide-react'
+import { Phone, MessageCircle, Mail, MapPin, Clock } from 'lucide-react'
 import LocationSection from '@/components/LocationSection'
 
 const BASE_URL = 'https://www.sunsolarpowersystems.com'
@@ -164,25 +164,6 @@ export default function ContactPage() {
                   <MapPin className="w-5 h-5" />
                   View on Google Maps
                 </a>
-              </div>
-            </div>
-
-            <div className="bg-white border border-gray-100 rounded-2xl shadow-xl p-8">
-              <h2 className="text-lg font-bold text-dark-900 mb-4">Why Choose Us</h2>
-              <div className="space-y-3">
-                {[
-                  { icon: ShieldCheck, text: '1000+ Successful Installations' },
-                  { icon: Star, text: '4.9/5 Customer Rating' },
-                  { icon: Clock, text: '15+ Years Experience' },
-                ].map((item) => {
-                  const Icon = item.icon
-                  return (
-                    <div key={item.text} className="flex items-center gap-3">
-                      <Icon className="w-5 h-5 text-green-600 flex-shrink-0" />
-                      <span className="text-sm text-dark-700">{item.text}</span>
-                    </div>
-                  )
-                })}
               </div>
             </div>
 
