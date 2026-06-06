@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ChevronLeft, ChevronRight, Search, Grid3X3, Filter, ArrowRight } from 'lucide-react'
-import Image from 'next/image'
+import { X, ChevronLeft, ChevronRight, Search, Grid3X3, Filter, ArrowRight, ImageOff } from 'lucide-react'
+import Image, { type ImageProps } from 'next/image'
 import Link from 'next/link'
 import Button from '@/ui/Button'
 
@@ -14,6 +14,45 @@ interface Project {
   title: string
   category: Category
   image: string
+}
+
+type SafeImageProps = ImageProps & {
+  fallbackLabel?: string
+}
+
+function SafeImage({ fallbackLabel, onError, alt, src, ...rest }: SafeImageProps) {
+  const [errored, setErrored] = useState(false)
+
+  useEffect(() => {
+    setErrored(false)
+  }, [src])
+
+  if (errored) {
+    return (
+      <div
+        className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 text-gray-400 p-4 text-center"
+        role="img"
+        aria-label={typeof alt === 'string' ? alt : 'Image unavailable'}
+      >
+        <ImageOff className="w-8 h-8 mb-2" aria-hidden="true" />
+        <span className="text-xs font-medium leading-tight">{fallbackLabel || (typeof alt === 'string' ? alt : '') || 'Image unavailable'}</span>
+      </div>
+    )
+  }
+
+  const handleError: NonNullable<ImageProps['onError']> = (event) => {
+    setErrored(true)
+    onError?.(event)
+  }
+
+  return (
+    <Image
+      {...rest}
+      src={src}
+      alt={alt}
+      onError={handleError}
+    />
+  )
 }
 
 const categories: { key: Category; label: string }[] = [
@@ -43,8 +82,6 @@ const projects: Project[] = [
   { id: 'wp3', title: 'Borewell Solar Pump System', category: 'water-pump', image: '/images/works/wp3.webp' },
   { id: 'wp4', title: 'Agricultural Field Solar Pump', category: 'water-pump', image: '/images/works/wp4.webp' },
   { id: 'og1', title: '5kW On-Grid Solar System', category: 'on-grid', image: '/images/works/og_service.webp' },
-  { id: 'og2', title: 'On-Grid Solar Power Plant', category: 'on-grid', image: '/images/works/of_alt.webp' },
-  { id: 'of1', title: 'Off-Grid Solar System with Battery', category: 'off-grid', image: '/images/works/solar-home.webp' },
   { id: 'of2', title: 'Off-Grid Solar for Rural Home', category: 'off-grid', image: '/images/works/of_alt.webp' },
   { id: 'sl1', title: 'Solar Street Light - Road Installation', category: 'street-light', image: '/images/works/sl1.webp' },
   { id: 'sl2', title: 'Solar Street Light - Public Area', category: 'street-light', image: '/images/works/sl2.webp' },
@@ -202,7 +239,6 @@ export default function OurWorksPage() {
         <motion.div layout className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, index) => {
-              const actualIndex = projects.indexOf(project)
               return (
                 <motion.div
                   key={project.id}
@@ -212,13 +248,14 @@ export default function OurWorksPage() {
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.35, ease: 'easeOut' }}
                   className="break-inside-avoid group cursor-pointer"
-                  onClick={() => openLightbox(actualIndex)}
+                  onClick={() => openLightbox(index)}
                 >
                   <div className="relative overflow-hidden rounded-2xl bg-gray-100 shadow-sm hover:shadow-xl transition-all duration-500">
                     <div className="relative w-full" style={{ minHeight: '280px' }}>
-                      <Image
+                      <SafeImage
                         src={project.image}
                         alt={project.title}
+                        fallbackLabel={project.title}
                         fill
                         className="object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
