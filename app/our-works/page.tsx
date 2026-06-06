@@ -87,7 +87,6 @@ const projects: Project[] = [
   { id: 'sl2', title: 'Solar Street Light - Public Area', category: 'street-light', image: '/images/works/sl2.webp' },
   { id: 'sl3', title: 'Solar Compound Light Installation', category: 'street-light', image: '/images/works/sl3.webp' },
   { id: 'sl4', title: 'Commercial Solar Street Lighting', category: 'street-light', image: '/images/works/sl4.webp' },
-  { id: 'sl5', title: 'Solar LED Street Light System', category: 'street-light', image: '/images/works/sl_alt.webp' },
 ]
 
 const stats = [
@@ -236,7 +235,7 @@ export default function OurWorksPage() {
           </div>
         </div>
 
-        <motion.div layout className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 auto-rows-fr">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, index) => {
               return (
@@ -247,11 +246,11 @@ export default function OurWorksPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.35, ease: 'easeOut' }}
-                  className="break-inside-avoid group cursor-pointer"
+                  className="group cursor-pointer h-full"
                   onClick={() => openLightbox(index)}
                 >
-                  <div className="relative overflow-hidden rounded-2xl bg-gray-100 shadow-sm hover:shadow-xl transition-all duration-500">
-                    <div className="relative w-full" style={{ minHeight: '280px' }}>
+                  <div className="relative h-full overflow-hidden rounded-2xl bg-gray-100 shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div className="relative w-full aspect-[4/3] overflow-hidden">
                       <SafeImage
                         src={project.image}
                         alt={project.title}
@@ -261,20 +260,20 @@ export default function OurWorksPage() {
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         loading="lazy"
                       />
-                    </div>
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                    <div className="absolute top-3 left-3 z-10">
-                      <span className="px-2.5 py-1 bg-white/90 backdrop-blur-sm text-dark-800 text-xs font-medium rounded-lg shadow-sm">
-                        {categories.find((c) => c.key === project.category)?.label || project.category}
-                      </span>
-                    </div>
+                      <div className="absolute top-3 left-3 z-10">
+                        <span className="px-2.5 py-1 bg-white/90 backdrop-blur-sm text-dark-800 text-xs font-medium rounded-lg shadow-sm">
+                          {categories.find((c) => c.key === project.category)?.label || project.category}
+                        </span>
+                      </div>
 
-                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                      <h3 className="text-white font-poppins text-sm sm:text-base font-semibold leading-snug drop-shadow-sm">
-                        {project.title}
-                      </h3>
+                      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                        <h3 className="text-white font-poppins text-sm sm:text-base font-semibold leading-snug drop-shadow-sm line-clamp-2">
+                          {project.title}
+                        </h3>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
